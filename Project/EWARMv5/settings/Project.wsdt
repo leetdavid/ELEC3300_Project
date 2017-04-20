@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>Project/STM3210E debug</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>348</Column0><Column1>27</Column1><Column2>27</Column2><Column3>1242260</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>933</ColumnWidth1><ColumnWidth2>249</ColumnWidth2><ColumnWidth3>62</ColumnWidth3></Build>
+    <Debug-Log><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1245</ColumnWidth1></Debug-Log><TerminalIO/></Static>
+    <Windows>
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-25597-10375</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>Project</ExpandedNode><ExpandedNode>Project/Doc</ExpandedNode><ExpandedNode>Project/Player</ExpandedNode><ExpandedNode>Project/STM32_EVAL</ExpandedNode><ExpandedNode>Project/Speaker_Driver</ExpandedNode><ExpandedNode>Project/User</ExpandedNode><ExpandedNode>Project/User/lcd.c</ExpandedNode><ExpandedNode>Project/User/lcd.c/Output</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-24844-10594</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-4812-16700</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd1></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\PROJ\Project\lcd\lcd.c</Filename><XPos>0</XPos><YPos>579</YPos><SelStart>27232</SelStart><SelEnd>27232</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\PROJ\Project\player\waveplayer.h</Filename><XPos>0</XPos><YPos>51</YPos><SelStart>2915</SelStart><SelEnd>2915</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\PROJ\Project\main.c</Filename><XPos>0</XPos><YPos>4</YPos><SelStart>720</SelStart><SelEnd>720</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\PROJ\Project\player\waveplayer.c</Filename><XPos>0</XPos><YPos>536</YPos><SelStart>15519</SelStart><SelEnd>15519</SelEnd></Tab><ActiveTab>3</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-012786c8><key>iaridepm.enu1</key></Toolbar-012786c8></Sizes></Row0><Row1><Sizes/></Row1></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>495</Bottom><Right>422</Right><x>-2</x><y>-2</y><xscreen>255</xscreen><yscreen>149</yscreen><sizeHorzCX>186676</sizeHorzCX><sizeHorzCY>217201</sizeHorzCY><sizeVertCX>310395</sizeVertCX><sizeVertCY>724490</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>147</Bottom><Right>1368</Right><x>-2</x><y>-2</y><xscreen>1370</xscreen><yscreen>149</yscreen><sizeHorzCX>1002928</sizeHorzCX><sizeHorzCY>217201</sizeHorzCY><sizeVertCX>186676</sizeVertCX><sizeVertCY>217201</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+
