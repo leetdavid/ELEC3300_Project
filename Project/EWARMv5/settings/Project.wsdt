@@ -2,80 +2,204 @@
 
 <Workspace>
   <ConfigDictionary>
-    
-  <CurrentConfigs><Project>Project/STM3210E debug</Project></CurrentConfigs></ConfigDictionary>
+    <CurrentConfigs>
+      <Project>Project/STM3210E debug</Project>
+    </CurrentConfigs>
+  </ConfigDictionary>
   <Desktop>
     <Static>
       <Workspace>
         <ColumnWidths>
-          
-          
-          
-          
-<<<<<<< HEAD
-        <Column0>321</Column0><Column1>27</Column1><Column2>27</Column2><Column3>1242260</Column3></ColumnWidths>
-=======
-        <Column0>94</Column0><Column1>27</Column1><Column2>27</Column2><Column3>1242260</Column3></ColumnWidths>
->>>>>>> origin/master
+          <Column0>214</Column0>
+          <Column1>27</Column1>
+          <Column2>27</Column2>
+          <Column3>27</Column3>
+        </ColumnWidths>
       </Workspace>
       <Build>
-        
-        
-        
-        
-      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>933</ColumnWidth1><ColumnWidth2>249</ColumnWidth2><ColumnWidth3>62</ColumnWidth3></Build>
-    <Debug-Log><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1245</ColumnWidth1></Debug-Log><TerminalIO/></Static>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>916</ColumnWidth1>
+        <ColumnWidth2>244</ColumnWidth2>
+        <ColumnWidth3>61</ColumnWidth3>
+      </Build>
+      <TerminalIO/>
+      <Debug-Log>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>1222</ColumnWidth1>
+      </Debug-Log>
+    </Static>
     <Windows>
-      
-      
-    <Wnd0>
+      <Wnd0>
         <Tabs>
           <Tab>
-            <Identity>TabID-25597-10375</Identity>
+            <Identity>TabID-22824-3455</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
-              
-<<<<<<< HEAD
-            <NodeDict><ExpandedNode>Project</ExpandedNode><ExpandedNode>Project/Button_Driver</ExpandedNode><ExpandedNode>Project/Doc</ExpandedNode><ExpandedNode>Project/LCD_Driver</ExpandedNode><ExpandedNode>Project/Player</ExpandedNode><ExpandedNode>Project/REncoder_Driver</ExpandedNode><ExpandedNode>Project/Speaker_Driver</ExpandedNode><ExpandedNode>Project/User</ExpandedNode><ExpandedNode>Project/User/lcd.c</ExpandedNode><ExpandedNode>Project/User/lcd.c/Output</ExpandedNode></NodeDict></Session>
-=======
-            <NodeDict><ExpandedNode>Project</ExpandedNode><ExpandedNode>Project/Doc</ExpandedNode><ExpandedNode>Project/EWARMv5</ExpandedNode><ExpandedNode>Project/Player</ExpandedNode><ExpandedNode>Project/SDcard_Driver</ExpandedNode><ExpandedNode>Project/STM32_EVAL</ExpandedNode><ExpandedNode>Project/Speaker_Driver</ExpandedNode><ExpandedNode>Project/User</ExpandedNode><ExpandedNode>Project/User/lcd.c</ExpandedNode><ExpandedNode>Project/User/lcd.c/Output</ExpandedNode></NodeDict></Session>
->>>>>>> origin/master
+              <NodeDict>
+                <ExpandedNode>Project</ExpandedNode>
+                <ExpandedNode>Project/Button_Driver</ExpandedNode>
+                <ExpandedNode>Project/REncoder_Driver</ExpandedNode>
+                <ExpandedNode>Project/User</ExpandedNode>
+              </NodeDict>
+            </Session>
           </Tab>
         </Tabs>
-        
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <SelectedTab>0</SelectedTab>
+      </Wnd0>
+      <Wnd1>
         <Tabs>
           <Tab>
-            <Identity>TabID-24844-10594</Identity>
+            <Identity>TabID-29913-3526</Identity>
             <TabName>Build</TabName>
             <Factory>Build</Factory>
             <Session/>
           </Tab>
-        <Tab><Identity>TabID-4812-16700</Identity><TabName>Debug Log</TabName><Factory>Debug-Log</Factory><Session/></Tab></Tabs>
-        
-      <SelectedTab>1</SelectedTab></Wnd1></Windows>
+          <Tab>
+            <Identity>TabID-19165-8640</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        <SelectedTab>0</SelectedTab>
+      </Wnd1>
+    </Windows>
     <Editor>
-      
-      
-      
-      
-<<<<<<< HEAD
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.h</Filename><XPos>0</XPos><YPos>21</YPos><SelStart>1356</SelStart><SelEnd>1356</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h</Filename><XPos>0</XPos><YPos>79</YPos><SelStart>3078</SelStart><SelEnd>3088</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h</Filename><XPos>0</XPos><YPos>62</YPos><SelStart>4111</SelStart><SelEnd>4111</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\rencoder\rencoder.c</Filename><XPos>0</XPos><YPos>51</YPos><SelStart>2132</SelStart><SelEnd>2286</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\rencoder\rencoder.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>278</SelStart><SelEnd>303</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c</Filename><XPos>0</XPos><YPos>44</YPos><SelStart>13585</SelStart><SelEnd>13599</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\CMSIS\Core\CM3\stm32f10x.h</Filename><XPos>0</XPos><YPos>206</YPos><SelStart>14654</SelStart><SelEnd>14668</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h</Filename><XPos>0</XPos><YPos>45</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>720</SelStart><SelEnd>720</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\button\button.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>630</SelStart><SelEnd>630</SelEnd></Tab><ActiveTab>9</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\button\button.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>248</SelStart><SelEnd>248</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\player\waveplayer.c</Filename><XPos>0</XPos><YPos>498</YPos><SelStart>14629</SelStart><SelEnd>14629</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
-=======
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Users\David Lee\OneDrive\Homework\ELEC3300\ELEC3300PROJ\Project\main.c</Filename><XPos>0</XPos><YPos>135</YPos><SelStart>738</SelStart><SelEnd>738</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Users\David Lee\OneDrive\Homework\ELEC3300\ELEC3300PROJ\Project\speaker\speaker.c</Filename><XPos>0</XPos><YPos>65</YPos><SelStart>4275</SelStart><SelEnd>4275</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Users\David Lee\OneDrive\Homework\ELEC3300\ELEC3300PROJ\Project\sdcard\sdcard.c</Filename><XPos>0</XPos><YPos>11</YPos><SelStart>1113</SelStart><SelEnd>1113</SelEnd></Tab><ActiveTab>2</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
->>>>>>> origin/master
+      <Pane>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\button\button.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>1316</SelStart>
+          <SelEnd>1316</SelEnd>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>720</SelStart>
+          <SelEnd>720</SelEnd>
+        </Tab>
+        <ActiveTab>1</ActiveTab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\button\button.h</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h</Filename>
+          <XPos>0</XPos>
+          <YPos>67</YPos>
+          <SelStart>2343</SelStart>
+          <SelEnd>2359</SelEnd>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\rencoder\rencoder.c</Filename>
+          <XPos>0</XPos>
+          <YPos>15</YPos>
+          <SelStart>1285</SelStart>
+          <SelEnd>1285</SelEnd>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\rencoder\rencoder.h</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>0</SelStart>
+          <SelEnd>0</SelEnd>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.h</Filename>
+          <XPos>0</XPos>
+          <YPos>15</YPos>
+          <SelStart>1356</SelStart>
+          <SelEnd>1356</SelEnd>
+        </Tab>
+      </Pane>
+      <ActivePane>0</ActivePane>
+      <Sizes>
+        <Pane>
+          <X>1000000</X>
+          <Y>1000000</Y>
+        </Pane>
+      </Sizes>
+      <SplitMode>1</SplitMode>
+    </Editor>
     <Positions>
-      
-      
-      
-      
-      
-<<<<<<< HEAD
-    <Top><Row0><Sizes><Toolbar-01388178><key>iaridepm.enu1</key></Toolbar-01388178></Sizes></Row0></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>695</Bottom><Right>395</Right><x>-2</x><y>-2</y><xscreen>239</xscreen><yscreen>205</yscreen><sizeHorzCX>186719</sizeHorzCX><sizeHorzCY>217622</sizeHorzCY><sizeVertCX>310156</sizeVertCX><sizeVertCY>739915</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>203</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>205</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>217622</sizeHorzCY><sizeVertCX>186719</sizeVertCX><sizeVertCY>217622</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
-=======
-    <Top><Row0><Sizes><Toolbar-020a2388><key>iaridepm.enu1</key></Toolbar-020a2388></Sizes></Row0></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>454</Bottom><Right>168</Right><x>-2</x><y>-2</y><xscreen>236</xscreen><yscreen>226</yscreen><sizeHorzCX>361963</sizeHorzCX><sizeHorzCY>312586</sizeHorzCY><sizeVertCX>260736</sizeVertCX><sizeVertCY>630705</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>224</Bottom><Right>654</Right><x>-2</x><y>-2</y><xscreen>656</xscreen><yscreen>226</yscreen><sizeHorzCX>1006135</sizeHorzCX><sizeHorzCY>312586</sizeHorzCY><sizeVertCX>361963</sizeVertCX><sizeVertCY>312586</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
->>>>>>> origin/master
+      <Top>
+        <Row0>
+          <Sizes>
+            <Toolbar-0135a7a8>
+              <key>iaridepm.enu1</key>
+            </Toolbar-0135a7a8>
+          </Sizes>
+        </Row0>
+        <Row1>
+          <Sizes/>
+        </Row1>
+      </Top>
+      <Left>
+        <Row0>
+          <Sizes>
+            <Wnd0>
+              <Rect>
+                <Top>-2</Top>
+                <Left>-2</Left>
+                <Bottom>700</Bottom>
+                <Right>288</Right>
+                <x>-2</x>
+                <y>-2</y>
+                <xscreen>200</xscreen>
+                <yscreen>200</yscreen>
+                <sizeHorzCX>156250</sizeHorzCX>
+                <sizeHorzCY>212314</sizeHorzCY>
+                <sizeVertCX>226563</sizeVertCX>
+                <sizeVertCY>745223</sizeVertCY>
+              </Rect>
+            </Wnd0>
+          </Sizes>
+        </Row0>
+      </Left>
+      <Right>
+        <Row0>
+          <Sizes/>
+        </Row0>
+      </Right>
+      <Bottom>
+        <Row0>
+          <Sizes>
+            <Wnd1>
+              <Rect>
+                <Top>-2</Top>
+                <Left>-2</Left>
+                <Bottom>198</Bottom>
+                <Right>1282</Right>
+                <x>-2</x>
+                <y>-2</y>
+                <xscreen>1284</xscreen>
+                <yscreen>200</yscreen>
+                <sizeHorzCX>1003125</sizeHorzCX>
+                <sizeHorzCY>212314</sizeHorzCY>
+                <sizeVertCX>156250</sizeVertCX>
+                <sizeVertCY>212314</sizeVertCY>
+              </Rect>
+            </Wnd1>
+          </Sizes>
+        </Row0>
+      </Bottom>
+      <Float>
+        <Sizes/>
+      </Float>
+    </Positions>
   </Desktop>
 </Workspace>
 

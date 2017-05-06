@@ -13,7 +13,7 @@ void Button_Init(void) {
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_14 | GPIO_Pin_15;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
+  GPIO_Init(GPIOB, &GPIO_InitStructure);
   
   GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource14);
   EXTI_InitStructure.EXTI_Line = EXTI_Line14;
@@ -25,7 +25,7 @@ void Button_Init(void) {
   GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource15);
   EXTI_InitStructure.EXTI_Line = EXTI_Line15;
   EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
+  EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
   EXTI_InitStructure.EXTI_LineCmd = ENABLE;
   EXTI_Init(&EXTI_InitStructure);
   
@@ -36,7 +36,6 @@ void Button_Init(void) {
   b1_push_count = 0;
   b2_push_count = 0;
 }
-
 
 void EXTI15_10_IRQHandler(void) {
   if(EXTI_GetITStatus(EXTI_Line14) != RESET)

@@ -1,5 +1,5 @@
 [DebugChecksum]
-Checksum=1173805123
+Checksum=918997404
 [DisAssemblyWindow]
 NumStates=_ 1
 State 1=_ 1
@@ -23,29 +23,15 @@ ByteLimit=50
 Enabled=0
 Source=2
 Graph=0
-[TermIOLog]
-<<<<<<< HEAD
-LoggingEnabled=_ 0
-LogFile=_ ""
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
 Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
 [Disassemble mode]
 mode=1
 [Breakpoints]
 Bp0=_ "STD_CODE" "{Z:\elec3300\project work\project_src\PROJ\Project\player\waveplayer.c}.455.3@1" 0 0 0 0 "" 0 ""
 Count=1
-=======
-LoggingEnabled=_ 0
-LogFile=_ ""
-[Disassemble mode]
-mode=1
-[Breakpoints]
-Bp0=_ "STD_CODE" "{Z:\elec3300\project work\project_src\PROJ\Project\player\waveplayer.c}.455.3@1" 1 0 0 0 "" 0 ""
-Count=1
-[Log file]
-LoggingEnabled=_ 0
-LogFile=_ ""
-Category=_ 0
->>>>>>> origin/master

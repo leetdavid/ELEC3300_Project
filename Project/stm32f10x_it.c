@@ -150,13 +150,13 @@ void SysTick_Handler(void)
   * @param  None
   * @retval None
   */
-void EXTI9_5_IRQHandler(void)
-{
-   if(EXTI_GetITStatus(EXTI_Line5) != RESET)
-  {
-
-  }
-}
+//void EXTI9_5_IRQHandler(void)
+//{
+//   if(EXTI_GetITStatus(EXTI_Line5) != RESET)
+//  {
+//
+//  }
+//}
 
 /**
   * @brief  This function handles External lines 15 to 10 interrupt request.
