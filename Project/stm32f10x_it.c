@@ -130,10 +130,10 @@ void SysTick_Handler(void)
 
 
 /* Task 5: Modify the Interrupt Handler for EXTI_Line_0  */
-void EXTI0_IRQHandler(void)
-{
-   if(EXTI_GetITStatus(EXTI_Line0) != RESET)
-  {
+//void EXTI0_IRQHandler(void)
+//{
+//   if(EXTI_GetITStatus(EXTI_Line0) != RESET)
+//  {
 /* Task 5: Add code here to toggle LED5 (i.e. PF.8) when */
 /*          KEY1 (i.e. PA.0) is pressed.                  */
  
@@ -141,9 +141,9 @@ void EXTI0_IRQHandler(void)
 
 
 /* Clear the Key Button EXTI line pending bit */
-    EXTI_ClearITPendingBit(EXTI_Line0);
-  }  
-}
+//    EXTI_ClearITPendingBit(EXTI_Line0);
+//  }  
+//}
 
 /**
   * @brief  This function handles External lines 9 to 5 interrupt request.

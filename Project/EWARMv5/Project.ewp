@@ -291,6 +291,7 @@
           <state>$PROJ_DIR$\..\..\Project\fatfs</state>
           <state>$PROJ_DIR$\..\..\Project\speaker</state>
           <state>$PROJ_DIR$\..\..\Project\player</state>
+          <state>$PROJ_DIR$\..\..\Project\rencoder</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -835,6 +836,12 @@
     <name>Player</name>
     <file>
       <name>$PROJ_DIR$\..\player\waveplayer.c</name>
+    </file>
+  </group>
+  <group>
+    <name>REncoder_Driver</name>
+    <file>
+      <name>$PROJ_DIR$\..\rencoder\rencoder.c</name>
     </file>
   </group>
   <group>

@@ -49,6 +49,9 @@ int main(void)
 
   /* Please add your project initialization code below */
 
+  //Test REncoder
+  REncoder_Init();
+  
   //Test LCD
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_FSMC, ENABLE);
 
