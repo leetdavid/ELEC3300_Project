@@ -8,6 +8,7 @@
 #define Turning_CCW     3
 
 static u8 rencoder_state;
+static uint32_t turn_count;
 
 u8 ifPinsEqual(void) {
   bool pinC0 = GPIOC->IDR & GPIO_Pin_0 == GPIO_Pin_0 ? TRUE : FALSE;
@@ -58,24 +59,24 @@ void REncoder_Init(void) {
   NVIC_Init(&NVIC_InitStructure);
   
   setStableState();
+  turn_count = 0;
 }
 
 void EXTI0_IRQHandler(void) {
   if(EXTI_GetITStatus(EXTI_Line0) != RESET)
   {
     if(ifPinsEqual()) {
+      turn_count = turn_count - 1;
       LCD_Clear();
       u8 testStr[] = "Turned CCW";
       LCD_DrawString(0, 0, testStr, sizeof testStr);
+      LCD_DrawChar(2, 0, HexValueOffset[turn_count]);
       setStableState();
     } else {
       if(rencoder_state == H_Stable_State || rencoder_state == L_Stable_State) {
         rencoder_state = Turning_CW;
       }
     }
-    //LCD_Clear();
-    //u8 testStr[] = "EXTI0";
-    //LCD_DrawString(0, 0, testStr, sizeof testStr);
     
     /* Clear the Key Button EXTI line pending bit */
     EXTI_ClearITPendingBit(EXTI_Line0);
@@ -86,18 +87,17 @@ void EXTI1_IRQHandler(void) {
   if(EXTI_GetITStatus(EXTI_Line1) != RESET)
   {
     if(ifPinsEqual()) {
+      turn_count = turn_count + 1;
       LCD_Clear();
       u8 testStr[] = "Turned CW";
       LCD_DrawString(0, 0, testStr, sizeof testStr);
+      LCD_DrawChar(2, 0, HexValueOffset[turn_count]);
       setStableState();
     } else {
       if(rencoder_state == H_Stable_State || rencoder_state == L_Stable_State) {
         rencoder_state = Turning_CCW;
       }
     }
-    //LCD_Clear();
-    //u8 testStr[] = "EXTI1";
-    //LCD_DrawString(0, 0, testStr, sizeof testStr);
     
     /* Clear the Key Button EXTI line pending bit */
     EXTI_ClearITPendingBit(EXTI_Line1);
