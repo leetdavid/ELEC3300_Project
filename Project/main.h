@@ -37,6 +37,7 @@ extern "C"
 #include "speaker.h"
 #include "waveplayer.h"
 #include "rencoder.h"
+#include "button.h"
 
 #ifdef __cplusplus
 }

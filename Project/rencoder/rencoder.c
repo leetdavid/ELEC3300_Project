@@ -1,5 +1,6 @@
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f10x_it.h"
+//#include "stm32f10x_it.h"
+#include "rencoder.h"
 #include "lcd.h"
 
 #define H_Stable_State  0

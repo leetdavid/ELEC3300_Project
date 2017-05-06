@@ -163,12 +163,12 @@ void EXTI9_5_IRQHandler(void)
   * @param  None
   * @retval None
   */
-void EXTI15_10_IRQHandler(void)
-{
-  if(EXTI_GetITStatus(EXTI_Line10) != RESET)
-  {
-  }
-}
+//void EXTI15_10_IRQHandler(void)
+//{
+//  if(EXTI_GetITStatus(EXTI_Line10) != RESET)
+//  {
+//  }
+//}
 
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */

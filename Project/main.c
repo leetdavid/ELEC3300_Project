@@ -49,6 +49,8 @@ int main(void)
 
   /* Please add your project initialization code below */
 
+  //Test Button
+  Button_Init();
   //Test REncoder
   REncoder_Init();
   

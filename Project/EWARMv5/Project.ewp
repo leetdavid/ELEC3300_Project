@@ -292,6 +292,7 @@
           <state>$PROJ_DIR$\..\..\Project\speaker</state>
           <state>$PROJ_DIR$\..\..\Project\player</state>
           <state>$PROJ_DIR$\..\..\Project\rencoder</state>
+          <state>$PROJ_DIR$\..\..\Project\button</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -802,6 +803,12 @@
       <data/>
     </settings>
   </configuration>
+  <group>
+    <name>Button_Driver</name>
+    <file>
+      <name>$PROJ_DIR$\..\button\button.c</name>
+    </file>
+  </group>
   <group>
     <name>CMSIS</name>
     <file>

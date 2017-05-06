@@ -5,7 +5,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
 
-bool ifPinsEqual(void);
+u8 ifPinsEqual(void);
 void setStableState(void);
 void REncoder_Init(void);
 void EXTI0_IRQHandler(void);
