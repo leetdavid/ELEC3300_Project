@@ -203,7 +203,8 @@ u8 icons[][3][8] = {
       0x7E,
       0x00
     }
-  }{//Heart
+  },
+  {//Heart
     {//R
       0x66,
       0xFF,
@@ -244,18 +245,27 @@ static u8 disp_g[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 static u8 disp_b[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
 static u8 mode = 0;
+static u8 h1, h2, m1, m2;
 
+/*---- High-Layer Functions ----*/
+void updateDisplay(void);
+void setTime(u8 h1, u8 h2, u8 m1, u8 m2);
+void setMode(u8 mode);
+void clearDisplay(void);
+
+/*---- Medium-Layer Functions ----*/
+void getCurrentTime(void);
+void copyNum(u8 *arr, u8 num, u8 x, u8 y);
+
+/*---- Low-Layer Functions ----*/
 void setDataPin(u8 value);
 void setDataClkPin(u8 value);
 void setLatchClkPin(u8 value);
 void LEDM_Init(void);
 void TIM2_IRQHandler(void);
+void LEDM_RTC_Configuration(void);
 
-/*---- High-Layer Functions ----*/
-void showDisplay(u8 row, u8 rval, u8 gval, u8 bval);
-void copyNum(u8 arr[8], u8 num, u8 x, u8 y);
-void setTime(u8 h1, u8 h2, u8 m1, u8 m2);
-void setMode(u8 mode);
+
 
 /* Minor Methods */
 void delay(void);

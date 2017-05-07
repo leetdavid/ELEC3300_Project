@@ -223,3 +223,6 @@ pip-log.txt
 *.wsdt
 *.dep
 *.dep
+*.wsdt
+Project/EWARMv5/Project.dep
+*.map

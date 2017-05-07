@@ -10,19 +10,11 @@ static u8 column_bit_no;
 static u8 next_data_rising;
 static u8 next_latch_rising;
 
-u8 h1, h2, m1, m2;
-
 void getCurrentTime(void){
-  /*
-  h1 = 0;
-  h2 = 0;
-  m1 = 0;
-  m2 = 0;
-  */
   uint32_t timevar = RTC_GetCounter();
   uint32_t THH = timevar/3600;
   uint32_t TMM = (timevar%3600)/60;
-  uint32_t TSS = (timevar%3600)%60;
+  //uint32_t TSS = (timevar%3600)%60;
 
   h1 = THH/10;
   h2 = THH%10;
@@ -33,27 +25,31 @@ void getCurrentTime(void){
 
 void updateDisplay(void){
   for(u8 i = 0; i < 8; i++){
-    
+
     led_buffer[i] = 
         0x00000000 |
-        ~(bval[i]) << 24 | 
-        ~(rval[i]) << 16 | 
-        ~(gval[i]) << 8 |
+        ~(disp_b[i]) << 24 | 
+        ~(disp_r[i]) << 16 | 
+        ~(disp_g[i]) << 8 |
         1 << i;
   }
 }
 
-inline void copyNum(u8 arr[8], u8 num, u8 x, u8 y){
+void copyNum(u8 *arr, u8 num, u8 x, u8 y){
   for(u8 i = 0; i < 5; i++)
-    val[i+y] |= (arr[num][i] >> x);
+    arr[i+y] |= nums[num][i] >> x;
+}
+
+void clearDisplay(void){
+  for(u8 i = 0; i < 8; i++){
+    disp_r[i] = 0;
+    disp_g[i] = 0;
+    disp_b[i] = 0;
+  }
 }
 
 void setTime(u8 h1, u8 h2, u8 m1, u8 m2){
-  for(u8 i = 0; i < 8; i++){
-    r_val[i] = 0;
-    g_val[i] = 0;
-    b_val[i] = 0;
-  }
+  clearDisplay();
   copyNum(disp_r, h1, 0, 0);
   copyNum(disp_r, h2, 4, 0);
   copyNum(disp_b, m1, 1, 3);
