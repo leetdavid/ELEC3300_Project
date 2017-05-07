@@ -5,6 +5,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
 
+u8 h1, h2, m1, m2;
+
 void Clock_Init(void);
+void Clock_RTC_Configuration(void);
+void Clock_UpdateValues(void);
 
 #endif /*__CLOCK_H*/

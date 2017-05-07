@@ -1,6 +1,6 @@
 #include "ds18b20.h"
 
-u8 precission = 3;
+u8 precision = 3;
 one_wire_device *one_wire_list_of_devices;
 u8 one_wire_devices_list_size = 2;
 
@@ -9,8 +9,8 @@ void ds18b20_init(GPIO_TypeDef *gpio, u16 port, TIM_TypeDef *timer) {
 	one_wire_list_of_devices = one_wire_search_rom(&one_wire_devices_list_size);
 }
 
-u8 ds18b20_get_precission(void) {
-	return precission;
+u8 ds18b20_get_precision(void) {
+	return precision;
 }
 
 ds18b20_devices ds18b20_get_devices(bool scan) {
@@ -24,8 +24,8 @@ ds18b20_devices ds18b20_get_devices(bool scan) {
     return ret;
 }
 
-void ds18b20_set_precission(u8 p) {
-	precission = p;
+void ds18b20_set_precision(u8 p) {
+	precision = p;
 	one_wire_reset_pulse();
 
 	one_wire_write_byte(0xCC); // Skip ROM
@@ -33,8 +33,8 @@ void ds18b20_set_precission(u8 p) {
 
 	one_wire_write_byte(0x4B);
 	one_wire_write_byte(0x46);
-	// set precission
-	one_wire_write_byte(0x1F | (precission << 5));
+	// set precision
+	one_wire_write_byte(0x1F | (precision << 5));
 }
 
 void ds18b20_convert_temperature_simple(void) {
@@ -115,13 +115,13 @@ simple_float ds18b20_decode_temperature(void) {
 }
 
 void ds18b20_wait_for_conversion(void) {
-	if (precission == 0) {
+	if (precision == 0) {
 		delay(95);
-	} else if (precission == 1) {
+	} else if (precision == 1) {
 		delay(190);
-	} else if (precission == 2) {
+	} else if (precision == 2) {
 		delay(380);
-	} else if (precission == 3) {
+	} else if (precision == 3) {
 		delay(750);
 	}
 }
