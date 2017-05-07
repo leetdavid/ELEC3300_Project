@@ -293,6 +293,8 @@
           <state>$PROJ_DIR$\..\..\Project\player</state>
           <state>$PROJ_DIR$\..\..\Project\rencoder</state>
           <state>$PROJ_DIR$\..\..\Project\button</state>
+          <state>$PROJ_DIR$\..\..\Project\ledm</state>
+          <state>$PROJ_DIR$\..\..\Project\clock</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -810,6 +812,12 @@
     </file>
   </group>
   <group>
+    <name>Clock_Driver</name>
+    <file>
+      <name>$PROJ_DIR$\..\clock\clock.c</name>
+    </file>
+  </group>
+  <group>
     <name>CMSIS</name>
     <file>
       <name>$PROJ_DIR$\..\..\Libraries\CMSIS\Core\CM3\core_cm3.c</name>
@@ -837,6 +845,12 @@
     <name>LCD_Driver</name>
     <file>
       <name>$PROJ_DIR$\..\lcd\lcd.c</name>
+    </file>
+  </group>
+  <group>
+    <name>LEDM_Driver</name>
+    <file>
+      <name>$PROJ_DIR$\..\ledm\ledm.c</name>
     </file>
   </group>
   <group>

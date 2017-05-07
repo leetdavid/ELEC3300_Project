@@ -38,6 +38,8 @@ extern "C"
 #include "waveplayer.h"
 #include "rencoder.h"
 #include "button.h"
+#include "ledm.h"
+#include "clock.h"
 
 #ifdef __cplusplus
 }

@@ -53,6 +53,10 @@ int main(void)
   Button_Init();
   //Test REncoder
   REncoder_Init();
+  //Test LEDM
+  LEDM_Init();
+  //Test Clock
+  Clock_Init();
   
   //Test LCD
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_FSMC, ENABLE);
