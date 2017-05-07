@@ -233,3 +233,5 @@ Project/EWARMv5/Project.dep
 Project/EWARMv5/STM3210E debug/List/STM3210E-EVAL.map
 *.wsdt
 Project/EWARMv5/Project.dep
+*.dbgdt
+Project/EWARMv5/settings/Project.cspy.bat
