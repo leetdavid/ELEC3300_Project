@@ -11,10 +11,8 @@
 
 static u32 led_buffer [8]; 
 
-void setDataPin(u8 value);
-void setDataClkPin(u8 value);
 void setLatchClkPin(u8 value);
 void LEDM_Init(void);
-void TIM2_IRQHandler(void);
+void update_Buffer(void);
 
 #endif /*__LEDM_H*/
