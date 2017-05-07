@@ -1,6 +1,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "ledm.h"
+#include "stm32_eval.h"
 #include <string.h>
+#include <stdio.h>
 
 const u8 row_array[] = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 static u8 row_no;
@@ -8,102 +10,40 @@ static u8 column_bit_no;
 static u8 next_data_rising;
 static u8 next_latch_rising;
 
-u8 blank[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+u8 h1, h2, m1, m2;
 
-u8 nums[10][5] = {
-  { 
-    B01000000, //0
-    B10100000,
-    B10100000,
-    B10100000,
-    B01000000},
-  {
-    B01000000, //1
-    B11000000,
-    B01000000,
-    B01000000,
-    B01000000},
-  {
-    B11000000, //2
-    B00100000,
-    B01000000,
-    B10000000,
-    B11100000},
-  {  
-    B11000000, //3
-    B00100000,
-    B11000000,
-    B00100000,
-    B11000000},
-  {
-    B10100000, //4
-    B10100000,
-    B11100000,
-    B00100000,
-    B00100000},
-  {
-    B11100000, //5
-    B10000000,
-    B11000000,
-    B00100000,
-    B11000000},
-  {
-    B01100000, //6
-    B10000000,
-    B11000000,
-    B10100000,
-    B01000000},
-  {
-    B11100000, //7
-    B10100000,
-    B00100000,
-    B01000000,
-    B01000000},
-  {
-    B01000000, //8
-    B10100000,
-    B01000000,
-    B10100000,
-    B01000000},
-  {
-    B01000000, //9
-    B10100000,
-    B01100000,
-    B00100000,
-    B11000000
-  }
-};
-
-u8 disp_r[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-u8 disp_g[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-u8 disp_b[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-
-void showDisplay(u8 row, u8 rval, u8 gval, u8 bval){
-  //TODO: actually show the display
+void getCurrentTime(void){
   /*
-  Arduino Code
-
-    //display the image r_val, g_val, b_val
-    for(int j = 0; j < 8; j++){
-      digitalWrite(latchPin, LOW);
-      displayOut(1<<j, r_val[j], g_val[j], b_val[j]);
-      digitalWrite(latchPin, HIGH);
-      //delay(1);
-      digitalWrite(latchPin, LOW);
-      displayOut(0, 0, 0, 0);
-      digitalWrite(latchPin, HIGH);
-    }
-
-    digitalWrite(latchPin, LOW);
-    shiftOut(dataPin, clockPin, LSBFIRST, ~bval);
-    shiftOut(dataPin, clockPin, LSBFIRST, ~rval);
-    shiftOut(dataPin, clockPin, LSBFIRST, ~gval);
-    shiftOut(dataPin, clockPin, LSBFIRST, row);
-    digitalWrite(latchPin, HIGH);
+  h1 = 0;
+  h2 = 0;
+  m1 = 0;
+  m2 = 0;
   */
+  uint32_t timevar = RTC_GetCounter();
+  uint32_t THH = timevar/3600;
+  uint32_t TMM = (timevar%3600)/60;
+  uint32_t TSS = (timevar%3600)%60;
+
+  h1 = THH/10;
+  h2 = THH%10;
+
+  m1 = TMM/10;
+  m2 = TMM%10;
 }
 
-void copyNum(u8 arr[8], u8 num, u8 x, u8 y){
+void updateDisplay(void){
+  for(u8 i = 0; i < 8; i++){
+    
+    led_buffer[i] = 
+        0x00000000 |
+        ~(bval[i]) << 24 | 
+        ~(rval[i]) << 16 | 
+        ~(gval[i]) << 8 |
+        1 << i;
+  }
+}
+
+inline void copyNum(u8 arr[8], u8 num, u8 x, u8 y){
   for(u8 i = 0; i < 5; i++)
     val[i+y] |= (arr[num][i] >> x);
 }
@@ -192,6 +132,9 @@ void LEDM_Init(void) {
   TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
   
   TIM_Cmd(TIM2, ENABLE);
+
+  /* Initalize RTC */
+  LEDM_RTC_Configuration();
 }
 
 void TIM2_IRQHandler(void) {
@@ -249,4 +192,36 @@ void delay(){
 
 void setMode(u8 m){
   mode = m;
+}
+
+void LEDM_RTC_Configuration(void){
+
+  /* Enable PWR and BKP clocks */
+  RCC_APB1PeriphClockCmd(RCC_APB1Periph_PWR | RCC_APB1Periph_BKP, ENABLE);
+
+  /* Allow access to BKP Domain */
+  PWR_BackupAccessCmd(ENABLE);
+
+  BKP_DeInit();
+
+  RCC_LSEConfig(RCC_LSE_ON);
+  /* wait until LSE is ready */
+  while(RCC_GetFlagStatus(RCC_FLAG_LSERDY) == RESET);
+
+  RCC_RTCCLKConfig(RCC_RTCCLKSource_LSE);
+
+  RCC_RTCCLKCmd(ENABLE);
+
+  RTC_WaitForSynchro();
+  RTC_WaitForLastTask();
+  RTC_ITConfig(RTC_IT_SEC, ENABLE);
+
+  RTC_WaitForLastTask();
+  
+  /* Set RTC Prescaler: set RTC period to 1 sec */
+  /* RTC period = RTCCLK/RTC_PR = 32.768kHz/(32767+1) */
+  RTC_SetPrescaler(32767); 
+
+  RTC_WaitForLastTask();
+
 }
