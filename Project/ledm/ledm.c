@@ -6,10 +6,7 @@
 
 const u8 row_array[] = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 static u8 row_no;
-<<<<<<< HEAD
 static u8 column_block_no;
-=======
-static u8 column_bit_no;
 static u8 next_data_rising;
 static u8 next_latch_rising;
 
@@ -59,22 +56,6 @@ void setTime(u8 h1, u8 h2, u8 m1, u8 m2){
   copyNum(disp_b, m2, 5, 3);
 }
 
-void setDataPin(u8 value) {
-  if(value > 0) {
-    GPIOB->BSRR = GPIOB->IDR | GPIO_Pin_11;
-  } else {
-    GPIOB->BSRR = GPIOB->IDR & (~GPIO_Pin_11);
-  }
-}
-
-void setDataClkPin(u8 value) {
-  if(value > 0) {
-    GPIOG->BSRR = GPIOG->IDR | GPIO_Pin_15;
-  } else {
-    GPIOG->BSRR = GPIOG->IDR & (~GPIO_Pin_15);
-  }
-}
->>>>>>> origin/master
 
 void setLatchClkPin(u8 value) {
   if(value > 0) {
@@ -118,10 +99,7 @@ void LEDM_Init(void) {
   
   memset(led_buffer, 0, sizeof(led_buffer));
   row_no = 0;
-<<<<<<< HEAD
   column_block_no = 0;
-=======
-  column_bit_no = 0;
   next_data_rising = 0;
   next_latch_rising = 0;
   
@@ -143,7 +121,6 @@ void LEDM_Init(void) {
 
   /* Initalize RTC */
   LEDM_RTC_Configuration();
->>>>>>> origin/master
 }
 
 void update_Buffer(void) {

@@ -240,11 +240,8 @@ static u8 icons[][3][8] = {
 
 static u32 led_buffer [8]; 
 
-<<<<<<< HEAD
-void setLatchClkPin(u8 value);
-void LEDM_Init(void);
-void update_Buffer(void);
-=======
+
+
 static u8 disp_r[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 static u8 disp_g[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 static u8 disp_b[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -263,10 +260,9 @@ void getCurrentTime(void);
 void copyNum(u8 *arr, u8 num, u8 x, u8 y);
 
 /*---- Low-Layer Functions ----*/
-void setDataPin(u8 value);
-void setDataClkPin(u8 value);
 void setLatchClkPin(u8 value);
 void LEDM_Init(void);
+void update_Buffer(void);
 void TIM2_IRQHandler(void);
 void LEDM_RTC_Configuration(void);
 
@@ -274,6 +270,5 @@ void LEDM_RTC_Configuration(void);
 
 /* Minor Methods */
 void LEDMdelay(void);
->>>>>>> origin/master
 
 #endif /*__LEDM_H*/
