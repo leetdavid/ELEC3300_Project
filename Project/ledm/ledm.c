@@ -175,8 +175,8 @@ __asm void wait(){
 }
 #endif
 
-void delay(void);
-void delay(){
+void LEDMdelay(void);
+void LEDMdelay(){
   vu8 i=0x8;
   while(i--)
     #ifdef __CC_ARM

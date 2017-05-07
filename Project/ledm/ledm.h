@@ -9,9 +9,9 @@
 #define DATA_BIT_LENGTH     24
 #define ROW_COUNT           8
 
-u8 blank[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+static u8 disp_blank[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
-u8 nums[10][5] = {
+static u8 nums[10][5] = {
   { 
     0x40, //0
     0xA0,
@@ -75,7 +75,7 @@ u8 nums[10][5] = {
   }
 };
 
-u8 icons[][3][8] = {
+static u8 icons[][3][8] = {
   {//Facebook Like
     {//R
       0x04,
@@ -268,6 +268,6 @@ void LEDM_RTC_Configuration(void);
 
 
 /* Minor Methods */
-void delay(void);
+void LEDMdelay(void);
 
 #endif /*__LEDM_H*/
