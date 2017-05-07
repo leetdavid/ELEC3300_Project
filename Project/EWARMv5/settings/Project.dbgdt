@@ -31,7 +31,7 @@
       
       
       
-    <Wnd0>
+    <Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-14787-20198</Identity>
@@ -47,7 +47,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-25535-20201</Identity>
@@ -59,20 +59,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd1><Wnd4><Tabs><Tab><Identity>TabID-18108-6620</Identity><TabName>Disassembly</TabName><Factory>Disassembly</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd4></Windows>
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd5><Tabs><Tab><Identity>TabID-18108-6620</Identity><TabName>Disassembly</TabName><Factory>Disassembly</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\button\button.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>304</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h</Filename><XPos>0</XPos><YPos>93</YPos><SelStart>2343</SelStart><SelEnd>2359</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\rencoder\rencoder.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.h</Filename><XPos>0</XPos><YPos>15</YPos><SelStart>1393</SelStart><SelEnd>1393</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h</Filename><XPos>0</XPos><YPos>237</YPos><SelStart>11425</SelStart><SelEnd>11437</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\ledm\ledm.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>281</SelStart><SelEnd>281</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\ledm\ledm.c</Filename><XPos>0</XPos><YPos>27</YPos><SelStart>1604</SelStart><SelEnd>1604</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\clock\clock.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>223</SelStart><SelEnd>245</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h</Filename><XPos>0</XPos><YPos>42</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>720</SelStart><SelEnd>720</SelEnd></Tab><ActiveTab>9</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\rencoder\rencoder.c</Filename><XPos>0</XPos><YPos>57</YPos><SelStart>2178</SelStart><SelEnd>2178</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\button\button.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>304</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h</Filename><XPos>0</XPos><YPos>93</YPos><SelStart>2343</SelStart><SelEnd>2359</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\rencoder\rencoder.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h</Filename><XPos>0</XPos><YPos>237</YPos><SelStart>11425</SelStart><SelEnd>11437</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\ledm\ledm.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>260</SelStart><SelEnd>275</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\ledm\ledm.c</Filename><XPos>0</XPos><YPos>78</YPos><SelStart>2616</SelStart><SelEnd>2616</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\clock\clock.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>223</SelStart><SelEnd>245</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h</Filename><XPos>0</XPos><YPos>42</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>720</SelStart><SelEnd>720</SelEnd></Tab><ActiveTab>8</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-013186c8><key>iaridepm.enu1</key></Toolbar-013186c8></Sizes></Row0><Row1><Sizes><Toolbar-013b2480><key>debuggergui.enu1</key></Toolbar-013b2480></Sizes></Row1></Top><Left><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>701</Bottom><Right>366</Right><x>-2</x><y>-2</y><xscreen>221</xscreen><yscreen>257</yscreen><sizeHorzCX>172656</sizeHorzCX><sizeHorzCY>272824</sizeHorzCY><sizeVertCX>287500</sizeVertCX><sizeVertCY>746285</sizeVertCY></Rect></Wnd1></Sizes></Row0></Left><Right><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>701</Bottom><Right>459</Right><x>-2</x><y>-2</y><xscreen>173</xscreen><yscreen>199</yscreen><sizeHorzCX>135156</sizeHorzCX><sizeHorzCY>211253</sizeHorzCY><sizeVertCX>360156</sizeVertCX><sizeVertCY>746285</sizeVertCY></Rect></Wnd4></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>173</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>175</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>185775</sizeHorzCY><sizeVertCX>172656</sizeVertCX><sizeVertCY>272824</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-012f8178><key>iaridepm.enu1</key></Toolbar-012f8178></Sizes></Row0><Row1><Sizes><Toolbar-062afb60><key>debuggergui.enu1</key></Toolbar-062afb60></Sizes></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>701</Bottom><Right>366</Right><x>-2</x><y>-2</y><xscreen>221</xscreen><yscreen>257</yscreen><sizeHorzCX>172656</sizeHorzCX><sizeHorzCY>272824</sizeHorzCY><sizeVertCX>287500</sizeVertCX><sizeVertCY>746285</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>701</Bottom><Right>459</Right><x>-2</x><y>-2</y><xscreen>173</xscreen><yscreen>199</yscreen><sizeHorzCX>135156</sizeHorzCX><sizeHorzCY>211253</sizeHorzCY><sizeVertCX>360156</sizeVertCX><sizeVertCY>746285</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>173</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>175</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>185775</sizeHorzCY><sizeVertCX>172656</sizeVertCX><sizeVertCY>272824</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 
