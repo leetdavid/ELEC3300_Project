@@ -110,7 +110,7 @@ simple_float ds18b20_decode_temperature(void) {
 
     char buffer[10];
     sprintf(buffer, "%d.%d\r", (int)temp, rest);
-    usart2_print(buffer);
+    //usart2_print(buffer);
     return f;
 }
 

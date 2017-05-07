@@ -2,8 +2,7 @@
 #define __DS18B20_H__
 #include "one_wire.h"
 #include "math.h"
-#include "utils.h"
-#include "usart.h"
+//#include "usart.h"
 #include <stdlib.h>
 #include <stdbool.h>
 

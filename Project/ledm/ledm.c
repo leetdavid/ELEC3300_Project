@@ -8,19 +8,6 @@ const u8 row_array[] = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 static u8 row_no;
 static u8 column_block_no;
 
-void getCurrentTime(void){
-  uint32_t timevar = RTC_GetCounter();
-  uint32_t THH = timevar/3600;
-  uint32_t TMM = (timevar%3600)/60;
-  //uint32_t TSS = (timevar%3600)%60;
-
-  h1 = THH/10;
-  h2 = THH%10;
-
-  m1 = TMM/10;
-  m2 = TMM%10;
-}
-
 void updateDisplay(void){
   for(u8 i = 0; i < 8; i++){
     led_buffer[i] = 
@@ -144,10 +131,6 @@ void LEDMdelay(void){
     #else
        asm("nop");
     #endif
-}
-
-void setMode(u8 m){
-  mode = m;
 }
 
 void LEDM_RTC_Configuration(void){
