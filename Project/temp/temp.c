@@ -23,10 +23,10 @@ void Temp_Read(void){
 void Temp_WaitForConversion(void){
 	ds18b20_wait_for_conversion();
 }
-/*
+
 u8 Temp_GetPrecision(void){
-	return precision;
-}*/
+	return ds18b20_get_precision();
+}
 
 void Temp_Convert(void){
 	ds18b20_convert_temperature_all();
