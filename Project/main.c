@@ -55,6 +55,9 @@ int main(void)
   REncoder_Init();
   //Test LEDM
   LEDM_Init();
+  while(1) {
+    update_Buffer();
+  }
   //Test Clock
   Clock_Init();
   //Test Temp (Temperature sensor)

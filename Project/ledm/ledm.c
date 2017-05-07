@@ -7,8 +7,6 @@
 const u8 row_array[] = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 static u8 row_no;
 static u8 column_block_no;
-static u8 next_data_rising;
-static u8 next_latch_rising;
 
 void getCurrentTime(void){
   uint32_t timevar = RTC_GetCounter();
@@ -25,12 +23,10 @@ void getCurrentTime(void){
 
 void updateDisplay(void){
   for(u8 i = 0; i < 8; i++){
-
     led_buffer[i] = 
-        0x00000000 |
-        ~(disp_b[i]) << 24 | 
-        ~(disp_r[i]) << 16 | 
-        ~(disp_g[i]) << 8 |
+        (~(disp_b[i]) & 0x000000FF) << 24 | 
+        (~(disp_r[i]) & 0x000000FF) << 16 | 
+        (~(disp_g[i]) & 0x000000FF) << 8 |
         1 << i;
   }
 }
@@ -88,52 +84,49 @@ void LEDM_Init(void) {
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
   SPI_InitStructure.SPI_Direction = SPI_Direction_1Line_Tx;
   SPI_InitStructure.SPI_Mode = SPI_Mode_Master; /* Master Mode */
-  SPI_InitStructure.SPI_DataSize = SPI_DataSize_16b;
+  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
   SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
   SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
-  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
+  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_LSB;
   SPI_Init(SPI1, &SPI_InitStructure); /* Configure SPI1 */
   SPI_Cmd(SPI1, ENABLE); /* Enable SPI1 */
   
   memset(led_buffer, 0, sizeof(led_buffer));
   row_no = 0;
   column_block_no = 0;
-  next_data_rising = 0;
-  next_latch_rising = 0;
-  
-  NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-  NVIC_Init(&NVIC_InitStructure);
-  
-  RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-  
-  TIM_TimeBaseStructure.TIM_Period = 1079; // TIMx_ARR register
-  TIM_TimeBaseStructure.TIM_Prescaler = 0;
-  TIM_TimeBaseStructure.TIM_ClockDivision = 0;
-  TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-  TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
-  
-  TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
-  
-  TIM_Cmd(TIM2, ENABLE);
 
+  
+  memcpy(disp_r, icons[0][0], sizeof(disp_r) * 8);
+  memcpy(disp_g, icons[0][1], sizeof(disp_g) * 8);
+  memcpy(disp_b, icons[0][2], sizeof(disp_b) * 8);
+  updateDisplay();
+  
   /* Initalize RTC */
   LEDM_RTC_Configuration();
 }
 
 void update_Buffer(void) {
+  u8 send_data;
   for(int i = 0; i < ROW_COUNT; i++) {
     setLatchClkPin(0);
-    u16 send_data = (led_buffer[i] & 0xFFFF0000) >> 16;
-    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
+    send_data = (led_buffer[i] & 0xFF000000) >> 24;
     SPI_I2S_SendData(SPI1, send_data);
     while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
-    send_data = (led_buffer[i] & 0x0000FFFF);
+    send_data = (led_buffer[i] & 0x00FF0000) >> 16;
     SPI_I2S_SendData(SPI1, send_data);
     while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
+    send_data = (led_buffer[i] & 0x0000FF00) >> 8;
+    SPI_I2S_SendData(SPI1, send_data);
+    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
+    send_data = (led_buffer[i] & 0x000000FF);
+    SPI_I2S_SendData(SPI1, send_data);
+    while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
+    for (long i=0; i<5000; i++);
     setLatchClkPin(1);
+    for (long i=0; i<5000; i++);
+    //for (long i=0; i<5000000; i++);
   }
 }
 

@@ -30,6 +30,8 @@ extern "C"
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
+  
+#include <string.h>
 
 #include "LCD.h"
 //#include "sdcard.h"
