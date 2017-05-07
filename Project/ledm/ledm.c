@@ -82,6 +82,18 @@ void showDisplay(u8 row, u8 rval, u8 gval, u8 bval){
   //TODO: actually show the display
   /*
   Arduino Code
+
+    //display the image r_val, g_val, b_val
+    for(int j = 0; j < 8; j++){
+      digitalWrite(latchPin, LOW);
+      displayOut(1<<j, r_val[j], g_val[j], b_val[j]);
+      digitalWrite(latchPin, HIGH);
+      //delay(1);
+      digitalWrite(latchPin, LOW);
+      displayOut(0, 0, 0, 0);
+      digitalWrite(latchPin, HIGH);
+    }
+
     digitalWrite(latchPin, LOW);
     shiftOut(dataPin, clockPin, LSBFIRST, ~bval);
     shiftOut(dataPin, clockPin, LSBFIRST, ~rval);
@@ -233,4 +245,8 @@ void delay(){
     #else
        asm("nop");
     #endif
+}
+
+void setMode(u8 m){
+  mode = m;
 }
