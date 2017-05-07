@@ -1,6 +1,6 @@
 /* Includes ------------------------------------------------------------------*/
-#include "clock.h"
+#include "wireless.h"
 
-void Clock_Init(void) {
+void Wireless_Init(void) {
   
 }

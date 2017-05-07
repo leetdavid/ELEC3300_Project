@@ -1,6 +1,6 @@
 /* Includes ------------------------------------------------------------------*/
-#include "clock.h"
+#include "temp.h"
 
-void Clock_Init(void) {
+void Temp_Init(void) {
   
 }

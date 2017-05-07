@@ -40,6 +40,9 @@ extern "C"
 #include "button.h"
 #include "ledm.h"
 #include "clock.h"
+#include "motor.h"
+#include "temp.h"
+#include "wireless.h"
 
 #ifdef __cplusplus
 }

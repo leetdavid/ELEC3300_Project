@@ -295,6 +295,9 @@
           <state>$PROJ_DIR$\..\..\Project\button</state>
           <state>$PROJ_DIR$\..\..\Project\ledm</state>
           <state>$PROJ_DIR$\..\..\Project\clock</state>
+          <state>$PROJ_DIR$\..\..\Project\motor</state>
+          <state>$PROJ_DIR$\..\..\Project\temp</state>
+          <state>$PROJ_DIR$\..\..\Project\wireless</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -854,6 +857,12 @@
     </file>
   </group>
   <group>
+    <name>Motor_Driver</name>
+    <file>
+      <name>$PROJ_DIR$\..\motor\motor.c</name>
+    </file>
+  </group>
+  <group>
     <name>Player</name>
     <file>
       <name>$PROJ_DIR$\..\player\waveplayer.c</name>
@@ -883,6 +892,9 @@
       <name>$PROJ_DIR$\..\..\Libraries\STM32F10x_StdPeriph_Driver\src\misc.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.c</name>
     </file>
     <file>
@@ -898,7 +910,13 @@
       <name>$PROJ_DIR$\..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.c</name>
@@ -917,6 +935,12 @@
     </file>
   </group>
   <group>
+    <name>Temp_Driver</name>
+    <file>
+      <name>$PROJ_DIR$\..\temp\temp.c</name>
+    </file>
+  </group>
+  <group>
     <name>User</name>
     <file>
       <name>$PROJ_DIR$\..\main.c</name>
@@ -932,6 +956,12 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\stm32f10x_it.h</name>
+    </file>
+  </group>
+  <group>
+    <name>Wireless_Driver</name>
+    <file>
+      <name>$PROJ_DIR$\..\wireless\wireless.c</name>
     </file>
   </group>
 </project>

@@ -57,6 +57,10 @@ int main(void)
   LEDM_Init();
   //Test Clock
   Clock_Init();
+  //Test Temp (Temperature sensor)
+  Temp_Init();
+  //Test Wireless
+  Wireless_Init();
   
   //Test LCD
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_FSMC, ENABLE);

@@ -1,6 +1,6 @@
 /* Includes ------------------------------------------------------------------*/
-#include "clock.h"
+#include "motor.h"
 
-void Clock_Init(void) {
+void Motor_Init(void) {
   
 }
