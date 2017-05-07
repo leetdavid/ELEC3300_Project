@@ -37,11 +37,9 @@ void copyNum(u8 *arr, u8 num, u8 x, u8 y){
 }
 
 void clearDisplay(void){
-  for(u8 i = 0; i < 8; i++){
-    disp_r[i] = 0;
-    disp_g[i] = 0;
-    disp_b[i] = 0;
-  }
+  memcpy(disp_r, disp_blank, sizeof(disp_r));
+  memcpy(disp_g, disp_blank, sizeof(disp_r));
+  memcpy(disp_b, disp_blank, sizeof(disp_r));
 }
 
 void setTime(u8 h1, u8 h2, u8 m1, u8 m2){
