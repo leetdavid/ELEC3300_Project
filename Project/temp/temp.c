@@ -1,33 +1,48 @@
 /* Includes ------------------------------------------------------------------*/
 #include "temp.h"
-#include "ds18b20.h"
+#include "OneWire.h"
+#include "stm32f10x_gpio.h"
 
 void Temp_Init(void) {
-	ds18b20_init(GPIOC, GPIO_Pin_6, TIM2);
+	//initialize OWire *wire first
+	//TODO
 
-
-	//This part is to read the temp value
-	//ds18b20_read_temperature_all();
-	Temp_Read();
-	//ds18b20_wait_for_conversion();
-	Temp_WaitForConversion();
-	//printf("%d---\r\n", Temp_GetPrecision());
-	Temp_Convert();
-
+	//Connect to PB.10
+	OWInit(wire, GPIOB, GPIO_Pin_10);
 }
 
 void Temp_Read(void){
-	ds18b20_read_temperature_all();
-}
+	u8 i;
+  	OWReset_search(wire);
+	if(OWSearch(wire, addr) == FALSE){
+		OWReset_search(wire);
+		//No more addresses!
+		return;
+	}
+	OWReset(wire);
+	OWSelect(wire, addr);
+	
+	OWWrite_bit(wire, 0x44);
+	//ds.write(0x44,1);
 
-void Temp_WaitForConversion(void){
-	ds18b20_wait_for_conversion();
-}
+	present = OWReset(wire);
+	OWSelect(wire, addr);
+	OWWrite_bit(wire, 0xBE);
+	//ds.write(0xBE);         // Read Scratchpad
 
-u8 Temp_GetPrecision(void){
-	return ds18b20_get_precision();
+	for ( i = 0; i < 9; i++) {           // we need 9 bytes
+		data[i] = OWRead(wire);
+		//data[i] = ds.read();
+	}
 }
 
 void Temp_Convert(void){
-	ds18b20_convert_temperature_all();
+  u16 temp = (data[1] << 8) + data[0];
+  signbit = temp & 0x8000;
+  if(signbit){
+  	temp = (temp ^ 0xFFFF) + 1;
+  }
+  temp = (6 * temp) + temp/4;
+  num_whole = temp/100;
+  num_decimal = temp%100;
 }

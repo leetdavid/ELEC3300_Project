@@ -940,16 +940,10 @@
   <group>
     <name>Temp_Driver</name>
     <file>
-      <name>$PROJ_DIR$\..\temp\ds18b20.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\temp\one_wire.c</name>
+      <name>$PROJ_DIR$\..\temp\OneWire.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\temp\temp.c</name>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\..\temp\temp.h</name>
     </file>
   </group>
   <group>
