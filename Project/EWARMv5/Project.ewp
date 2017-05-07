@@ -948,9 +948,6 @@
     <file>
       <name>$PROJ_DIR$\..\temp\temp.c</name>
     </file>
-    <file>
-      <name>$PROJ_DIR$\..\temp\temp.h</name>
-    </file>
   </group>
   <group>
     <name>User</name>
