@@ -8,6 +8,106 @@ static u8 column_bit_no;
 static u8 next_data_rising;
 static u8 next_latch_rising;
 
+u8 blank[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+
+u8 nums[10][5] = {
+  { 
+    B01000000, //0
+    B10100000,
+    B10100000,
+    B10100000,
+    B01000000},
+  {
+    B01000000, //1
+    B11000000,
+    B01000000,
+    B01000000,
+    B01000000},
+  {
+    B11000000, //2
+    B00100000,
+    B01000000,
+    B10000000,
+    B11100000},
+  {  
+    B11000000, //3
+    B00100000,
+    B11000000,
+    B00100000,
+    B11000000},
+  {
+    B10100000, //4
+    B10100000,
+    B11100000,
+    B00100000,
+    B00100000},
+  {
+    B11100000, //5
+    B10000000,
+    B11000000,
+    B00100000,
+    B11000000},
+  {
+    B01100000, //6
+    B10000000,
+    B11000000,
+    B10100000,
+    B01000000},
+  {
+    B11100000, //7
+    B10100000,
+    B00100000,
+    B01000000,
+    B01000000},
+  {
+    B01000000, //8
+    B10100000,
+    B01000000,
+    B10100000,
+    B01000000},
+  {
+    B01000000, //9
+    B10100000,
+    B01100000,
+    B00100000,
+    B11000000
+  }
+};
+
+u8 disp_r[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+u8 disp_g[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+u8 disp_b[8] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+
+void showDisplay(u8 row, u8 rval, u8 gval, u8 bval){
+  //TODO: actually show the display
+  /*
+  Arduino Code
+    digitalWrite(latchPin, LOW);
+    shiftOut(dataPin, clockPin, LSBFIRST, ~bval);
+    shiftOut(dataPin, clockPin, LSBFIRST, ~rval);
+    shiftOut(dataPin, clockPin, LSBFIRST, ~gval);
+    shiftOut(dataPin, clockPin, LSBFIRST, row);
+    digitalWrite(latchPin, HIGH);
+  */
+}
+
+void copyNum(u8 arr[8], u8 num, u8 x, u8 y){
+  for(u8 i = 0; i < 5; i++)
+    val[i+y] |= (arr[num][i] >> x);
+}
+
+void setTime(u8 h1, u8 h2, u8 m1, u8 m2){
+  for(u8 i = 0; i < 8; i++){
+    r_val[i] = 0;
+    g_val[i] = 0;
+    b_val[i] = 0;
+  }
+  copyNum(disp_r, h1, 0, 0);
+  copyNum(disp_r, h2, 4, 0);
+  copyNum(disp_b, m1, 1, 3);
+  copyNum(disp_b, m2, 5, 3);
+}
+
 void setDataPin(u8 value) {
   if(value > 0) {
     GPIOB->BSRR = GPIOB->IDR | GPIO_Pin_11;
@@ -115,4 +215,22 @@ void TIM2_IRQHandler(void) {
     }
     TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
   }
+}
+
+#ifdef __CC_ARM
+__asm void wait(){
+  nop
+  BX lr
+}
+#endif
+
+void delay(void);
+void delay(){
+  vu8 i=0x8;
+  while(i--)
+    #ifdef __CC_ARM
+    wait(); 
+    #else
+       asm("nop");
+    #endif
 }

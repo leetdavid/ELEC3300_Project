@@ -17,4 +17,12 @@ void setLatchClkPin(u8 value);
 void LEDM_Init(void);
 void TIM2_IRQHandler(void);
 
+/*---- High-Layer Functions ----*/
+void showDisplay(u8 row, u8 rval, u8 gval, u8 bval);
+void copyNum(u8 arr[8], u8 num, u8 x, u8 y);
+void setTime(u8 h1, u8 h2, u8 m1, u8 m2);
+
+/* Minor Methods */
+void delay(void);
+
 #endif /*__LEDM_H*/
