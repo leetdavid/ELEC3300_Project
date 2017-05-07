@@ -55,9 +55,9 @@ int main(void)
   REncoder_Init();
   //Test LEDM
   LEDM_Init();
-  while(1) {
-    update_Buffer();
-  }
+  //while(1) {
+  //  update_Buffer();
+  //}
   //Test Clock
   Clock_Init();
   //Test Temp (Temperature sensor)
@@ -123,14 +123,14 @@ int main(void)
   FATFS fs;
   BYTE FStatus = f_mount(&fs, "0:", 1);
   if (FStatus) {
-	LCD_Clear();
-	//LCD_DrawChar(0, 0, FStatus);
+    LCD_Clear();
+    //LCD_DrawChar(0, 0, FStatus);
     u8 updateStr2[] = "SD Mount Error";
-	LCD_DrawString(0, 0, updateStr2, sizeof updateStr2);
+    LCD_DrawString(0, 0, updateStr2, sizeof updateStr2);
   } else {
-	LCD_Clear();
-	u8 updateStr2[] = "SD Mounted";
-	LCD_DrawString(0, 0, updateStr2, sizeof updateStr2);
+    LCD_Clear();
+    u8 updateStr2[] = "SD Mounted";
+    LCD_DrawString(0, 0, updateStr2, sizeof updateStr2);
   }
   
   /*FILINFO fno;

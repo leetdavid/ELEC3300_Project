@@ -31,7 +31,7 @@
       
       
       
-    <Wnd3>
+    <Wnd2>
         <Tabs>
           <Tab>
             <Identity>TabID-14787-20198</Identity>
@@ -47,7 +47,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd3><Wnd4>
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
         <Tabs>
           <Tab>
             <Identity>TabID-25535-20201</Identity>
@@ -59,20 +59,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-28166-3583</Identity><TabName>Watch</TabName><Factory>Watch</Factory><Session><Expressions><Expression><Expression>disp_r</Expression></Expression><Expression><Expression>disp_g</Expression></Expression><Expression><Expression>disp_b</Expression></Expression><Expression><Expression>led_buffer</Expression></Expression></Expressions><TabId>0</TabId><Column0>100</Column0><Column1>100</Column1><Column2>100</Column2><Column3>100</Column3></Session></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
+      <SelectedTab>0</SelectedTab></Wnd3></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h</Filename><XPos>0</XPos><YPos>54</YPos><SelStart>2343</SelStart><SelEnd>2359</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h</Filename><XPos>0</XPos><YPos>231</YPos><SelStart>11425</SelStart><SelEnd>11437</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h</Filename><XPos>0</XPos><YPos>622</YPos><SelStart>26533</SelStart><SelEnd>26548</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\ledm\ledm.h</Filename><XPos>0</XPos><YPos>219</YPos><SelStart>3322</SelStart><SelEnd>3322</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h</Filename><XPos>0</XPos><YPos>42</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\ledm\ledm.c</Filename><XPos>0</XPos><YPos>15</YPos><SelStart>762</SelStart><SelEnd>762</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>720</SelStart><SelEnd>720</SelEnd></Tab><ActiveTab>6</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h</Filename><XPos>0</XPos><YPos>183</YPos><SelStart>7648</SelStart><SelEnd>7673</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c</Filename><XPos>0</XPos><YPos>609</YPos><SelStart>19661</SelStart><SelEnd>19670</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.c</Filename><XPos>0</XPos><YPos>396</YPos><SelStart>15412</SelStart><SelEnd>15412</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.h</Filename><XPos>0</XPos><YPos>15</YPos><SelStart>1236</SelStart><SelEnd>1236</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h</Filename><XPos>0</XPos><YPos>54</YPos><SelStart>2367</SelStart><SelEnd>2367</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\ledm\ledm.h</Filename><XPos>0</XPos><YPos>233</YPos><SelStart>3322</SelStart><SelEnd>3322</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h</Filename><XPos>0</XPos><YPos>42</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\ledm\ledm.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>125</SelStart><SelEnd>125</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>720</SelStart><SelEnd>720</SelEnd></Tab><ActiveTab>4</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\main.h</Filename><XPos>0</XPos><YPos>15</YPos><SelStart>1236</SelStart><SelEnd>1236</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Utilities\STM32_EVAL\stm32_eval.c</Filename><XPos>0</XPos><YPos>111</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.c</Filename><XPos>0</XPos><YPos>209</YPos><SelStart>5870</SelStart><SelEnd>5870</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>Z:\elec3300\project work\project_src\ELEC3300PROJ\Project\button\button.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>490</SelStart><SelEnd>490</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-01358178><key>iaridepm.enu1</key></Toolbar-01358178></Sizes></Row0><Row1><Sizes><Toolbar-013d60d8><key>debuggergui.enu1</key></Toolbar-013d60d8></Sizes></Row1></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>701</Bottom><Right>366</Right><x>-2</x><y>-2</y><xscreen>221</xscreen><yscreen>257</yscreen><sizeHorzCX>172656</sizeHorzCX><sizeHorzCY>272824</sizeHorzCY><sizeVertCX>287500</sizeVertCX><sizeVertCY>746285</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>701</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>156250</sizeHorzCX><sizeHorzCY>212314</sizeHorzCY><sizeVertCX>156250</sizeVertCX><sizeVertCY>746285</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>173</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>175</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>185775</sizeHorzCY><sizeVertCX>172656</sizeVertCX><sizeVertCY>272824</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-01268178><key>iaridepm.enu1</key></Toolbar-01268178></Sizes></Row0><Row1><Sizes><Toolbar-01305808><key>debuggergui.enu1</key></Toolbar-01305808></Sizes></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>701</Bottom><Right>366</Right><x>-2</x><y>-2</y><xscreen>221</xscreen><yscreen>257</yscreen><sizeHorzCX>172656</sizeHorzCX><sizeHorzCY>272824</sizeHorzCY><sizeVertCX>287500</sizeVertCX><sizeVertCY>746285</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>173</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>175</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>185775</sizeHorzCY><sizeVertCX>172656</sizeVertCX><sizeVertCY>272824</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

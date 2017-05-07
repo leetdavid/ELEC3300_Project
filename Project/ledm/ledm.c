@@ -1,8 +1,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "ledm.h"
-#include "stm32_eval.h"
+//#include "stm32_eval.h"
 #include <string.h>
-#include <stdio.h>
+//#include <stdio.h>
 
 const u8 row_array[] = {0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01};
 static u8 row_no;
@@ -64,8 +64,7 @@ void setLatchClkPin(u8 value) {
 void LEDM_Init(void) {
   GPIO_InitTypeDef GPIO_InitStructure;
   SPI_InitTypeDef SPI_InitStructure;
-  
-  RCC_PCLK2Config(RCC_HCLK_Div2); 
+  //RCC_PCLK2Config(RCC_HCLK_Div2); 
   
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
@@ -86,23 +85,26 @@ void LEDM_Init(void) {
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
   SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
   SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_LSB;
   SPI_Init(SPI1, &SPI_InitStructure); /* Configure SPI1 */
+  
   SPI_Cmd(SPI1, ENABLE); /* Enable SPI1 */
   
   memset(led_buffer, 0, sizeof(led_buffer));
   row_no = 0;
   column_block_no = 0;
-
   
-  memcpy(disp_r, icons[0][0], sizeof(disp_r) * 8);
-  memcpy(disp_g, icons[0][1], sizeof(disp_g) * 8);
-  memcpy(disp_b, icons[0][2], sizeof(disp_b) * 8);
+  // test codes  
+  //memcpy(disp_r, icons[0][0], sizeof(disp_r) * 8);
+  //memcpy(disp_g, icons[0][1], sizeof(disp_g) * 8);
+  //memcpy(disp_b, icons[0][2], sizeof(disp_b) * 8);
   updateDisplay();
   
+  update_Buffer();
+  
   /* Initalize RTC */
-  LEDM_RTC_Configuration();
+  //LEDM_RTC_Configuration();
 }
 
 void update_Buffer(void) {
@@ -121,22 +123,20 @@ void update_Buffer(void) {
     send_data = (led_buffer[i] & 0x000000FF);
     SPI_I2S_SendData(SPI1, send_data);
     while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
-    for (long i=0; i<5000; i++);
+    for (int i=0; i<500; i++);
     setLatchClkPin(1);
-    for (long i=0; i<5000; i++);
-    //for (long i=0; i<5000000; i++);
   }
 }
 
-#ifdef __CC_ARM
-__asm void wait(){
-  nop
-  BX lr
-}
-#endif
+//#ifdef __CC_ARM
+//__asm void wait(){
+//  nop
+//  BX lr
+//}
+//#endif
 
-void LEDMdelay(void);
-void LEDMdelay(){
+//void LEDMdelay(void);
+void LEDMdelay(void){
   vu8 i=0x8;
   while(i--)
     #ifdef __CC_ARM
@@ -179,5 +179,4 @@ void LEDM_RTC_Configuration(void){
   RTC_SetPrescaler(32767); 
 
   RTC_WaitForLastTask();
-
 }
