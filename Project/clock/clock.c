@@ -37,10 +37,15 @@ void Clock_RTC_Configuration(void){
 
 }
 
+uint32_t getRawTime(void){
+  time_raw = RTC_GetCounter();
+  return time_raw;
+}
+
 void Clock_UpdateValues(void){
-  uint32_t timevar = RTC_GetCounter();
-  uint32_t THH = timevar/3600;
-  uint32_t TMM = (timevar%3600)/60;
+  time_raw = getRawTime();
+  uint32_t THH = time_raw/3600;
+  uint32_t TMM = (time_raw%3600)/60;
   //uint32_t TSS = (timevar%3600)%60;
 
   h1 = THH/10;

@@ -9,34 +9,53 @@ static u8 row_no;
 static u8 column_block_no;
 static u8 update_count;
 
+static uint32_t time_mode_revert;
+
 void computeDisplay(void){
-  switch(mode){
-    case 0: /*--- Time ---*/
-      //TODO: get time
-      setDisplayTime(1, 2, 3, 4);
-      break;
-    case 1: /*--- Visualization ---*/
 
-      break;
-    case 2: /*--- Custom/Icons ---*/
-      u8 icon = 2; //make this value modifiable
+  /*--- Time ---*/
+  if(mode == 0){ 
+    //TODO: get time
+    setDisplayTime(1, 2, 3, 4);
 
-      break;
+    /*--- Visualization ---*/
+  } else if(mode == 1){
+
+
+    /*--- Custom/Icons ---*/
+  } else if(mode == 2){
+    u8 icon = 2; //make this value modifiable
+    mode_prev = mode;
+    mode = 3;
+    //how to access clock.h time_raw?
+    time_mode_revert = getRawTime() + 3; //will revert mode in 3 seconds
+    setIcon(icon);
+
+    /*--- Showing Icons Service ---*/
+  } else if(mode == 3){
+    //if enought time passes, revert mode back to what it previously was
+      if(getRawTime() >= time_mode_revert){
+        mode = mode_prev;
+
+      }
   }
 
   updateDisplay();
 }
 
-void setMode(u8 m){
+void setDisplayMode(u8 m){
   mode = m;
 }
 
-void setIcon(u8 icon){
-  u8 i;
-  for(i = 0; i < 8; i++){
-    disp_r[i] = icons[icon][0][i];
-    disp_g[i] = icons[icon][1][i];
-    disp_b[i] = icons[icon][2][i];
+void setDisplayIcon(u8 icon){
+  setDisplay(icons[icon][0],icons[icon][1],icons[icon][2]);
+}
+
+void setDisplay(u8 *r, u8 *g, u8 *b){
+  for(u8 i = 0; i < 8; i++){
+    disp_r[i] = r[i];
+    disp_g[i] = g[i];
+    disp_b[i] = b[i];
   }
 }
 
@@ -46,11 +65,6 @@ void updateDisplay(void){
     led_buffer[i*4 + 1] = ~(disp_r[i]);
     led_buffer[i*4 + 2] = ~(disp_g[i]);
     led_buffer[i*4 + 3] = 1 << i;
-    //led_buffer[i] = 
-    //    (~(disp_b[i]) & 0x000000FF) << 24 | 
-    //    (~(disp_r[i]) & 0x000000FF) << 16 | 
-    //    (~(disp_g[i]) & 0x000000FF) << 8 |
-    //    1 << i;
   }
 }
 
@@ -60,9 +74,7 @@ void copyNum(u8 *arr, u8 num, u8 x, u8 y){
 }
 
 void clearDisplay(void){
-  memcpy(disp_r, disp_blank, sizeof(disp_r));
-  memcpy(disp_g, disp_blank, sizeof(disp_r));
-  memcpy(disp_b, disp_blank, sizeof(disp_r));
+  setDisplay(disp_blank, disp_blank, disp_blank);
 }
 
 void setDisplayTime(u8 h1, u8 h2, u8 m1, u8 m2){
@@ -72,7 +84,6 @@ void setDisplayTime(u8 h1, u8 h2, u8 m1, u8 m2){
   copyNum(disp_b, m1, 1, 3);
   copyNum(disp_b, m2, 5, 3);
 }
-
 
 void setLatchClkPin(u8 value) {
   if(value > 0) {
@@ -154,11 +165,8 @@ void LEDM_Init(void) {
   update_count = 0;
   
   // test codes  
-  for(int i = 0; i < 8; i++) {
-    disp_r[i] = icons[0][0][i];
-    disp_g[i] = icons[0][1][i];
-    disp_b[i] = icons[0][2][i];
-  }
+  setDisplayIcon(0);
+  
   //memcpy(disp_r, icons[0][0], sizeof(disp_r) * 8);
   //memcpy(disp_g, icons[0][1], sizeof(disp_g) * 8);
   //memcpy(disp_b, icons[0][2], sizeof(disp_b) * 8);

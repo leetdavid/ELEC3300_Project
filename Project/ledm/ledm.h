@@ -245,18 +245,20 @@ static u8 disp_r[8];// = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 static u8 disp_g[8];// = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 static u8 disp_b[8];// = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
+static u8 mode_prev = 0;
 static u8 mode = 0;
 
 /*---- High-Layer Functions ----*/
-void updateDisplay(void);
 void setDisplayTime(u8 h1, u8 h2, u8 m1, u8 m2);
 void clearDisplay(void);
 void computeDisplay(void);
-void setMode(u8 mode);
-void setIcon(u8 icon);
+void setDisplayMode(u8 mode);
+void setDisplayIcon(u8 icon);
+void setDisplay(u8 *r, u8 *g, u8 *b);
 
 /*---- Medium-Layer Functions ----*/
 void copyNum(u8 *arr, u8 num, u8 x, u8 y);
+void updateDisplay(void);
 
 /*---- Low-Layer Functions ----*/
 void setLatchClkPin(u8 value);
