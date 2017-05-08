@@ -32,7 +32,6 @@ void Temp_Read(void){
 
 	for ( i = 0; i < 9; i++) {           // we need 9 bytes
 		data[i] = OWRead(wire);
-		//data[i] = ds.read();
 	}
 }
 
