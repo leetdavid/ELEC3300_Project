@@ -295,6 +295,7 @@
           <state>$PROJ_DIR$\..\..\Project\button</state>
           <state>$PROJ_DIR$\..\..\Project\ledm</state>
           <state>$PROJ_DIR$\..\..\Project\clock</state>
+          <state>$PROJ_DIR$\..\..\Project\bluetooth</state>
           <state>$PROJ_DIR$\..\..\Project\motor</state>
           <state>$PROJ_DIR$\..\..\Project\temp</state>
           <state>$PROJ_DIR$\..\..\Project\wireless</state>
