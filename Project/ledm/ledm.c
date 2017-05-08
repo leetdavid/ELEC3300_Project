@@ -9,6 +9,37 @@ static u8 row_no;
 static u8 column_block_no;
 static u8 update_count;
 
+void computeDisplay(void){
+  switch(mode){
+    case 0: /*--- Time ---*/
+      //TODO: get time
+      setDisplayTime(1, 2, 3, 4);
+      break;
+    case 1: /*--- Visualization ---*/
+
+      break;
+    case 2: /*--- Custom/Icons ---*/
+      u8 icon = 2; //make this value modifiable
+
+      break;
+  }
+
+  updateDisplay();
+}
+
+void setMode(u8 m){
+  mode = m;
+}
+
+void setIcon(u8 icon){
+  u8 i;
+  for(i = 0; i < 8; i++){
+    disp_r[i] = icons[icon][0][i];
+    disp_g[i] = icons[icon][1][i];
+    disp_b[i] = icons[icon][2][i];
+  }
+}
+
 void updateDisplay(void){
   for(u8 i = 0; i < 8; i++){
     led_buffer[i*4 + 0] = ~(disp_b[i]);
