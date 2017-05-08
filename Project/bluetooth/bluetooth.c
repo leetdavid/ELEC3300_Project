@@ -12,33 +12,39 @@ void Bluetooth_Init(void) {
 }
 
 void BLUETOOTH_Init_USART1(uint32_t baudrate){
-  GPIO_InitTypeDef GPIO_InitStruct;
-  USART_InitTypeDef USART_InitStruct;
+  ///*
+  GPIO_InitTypeDef GPIO_InitStructure;
+  USART_InitTypeDef USART_InitStructure;
   NVIC_InitTypeDef NVIC_InitStructure;
   
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1 | RCC_APB2Periph_AFIO | RCC_APB2Periph_GPIOB, ENABLE);
+  //RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
   
-  GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7; // Pins 6 (TX) and 7 (RX) are used
-  GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF;           // the pins are configured as alternate function so the USART peripheral has access to them
-  GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;      // this defines the IO speed and has nothing to do with the baudrate!
-  GPIO_InitStruct.GPIO_OType = GPIO_OType_PP;	      // this defines the output type as push pull mode (as opposed to open drain)
-  GPIO_InitStruct.GPIO_PuPd = GPIO_PuPd_NOPULL;	      // this activates the pullup resistors on the IO pins
+  // TX
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6; // Pins 6 (TX) and 7 (RX) are used
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;           // the pins are configured as alternate function so the USART peripheral has access to them
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;      // this defines the IO speed and has nothing to do with the baudrate!
   
-  GPIO_Init(GPIOB, &GPIO_InitStruct);                 // now all the values are passed to the GPIO_Init() function which sets the GPIO registers
+  // RX
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6; // Pins 6 (TX) and 7 (RX) are used
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;           // the pins are configured as alternate function so the USART peripheral has access to them
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;      // this defines the IO speed and has nothing to do with the baudrate!
   
-  GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_USART1); //
-  GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_USART1);
+  GPIO_Init(GPIOB, &GPIO_InitStructure);                 // now all the values are passed to the GPIO_Init() function which sets the GPIO registers
   
-  USART_InitStruct.USART_BaudRate = baudrate;				// the baudrate is set to the value we passed into this init function
-  USART_InitStruct.USART_WordLength = USART_WordLength_8b;// we want the data frame size to be 8 bits (standard)
-  USART_InitStruct.USART_StopBits = USART_StopBits_1;		// we want 1 stop bit (standard)
-  USART_InitStruct.USART_Parity = USART_Parity_No;		// we don't want a parity bit (standard)
-  USART_InitStruct.USART_HardwareFlowControl = USART_HardwareFlowControl_None; // we don't want flow control (standard)
-  USART_InitStruct.USART_Mode = USART_Mode_Tx | USART_Mode_Rx; // we want to enable the transmitter and the receiver
-  USART_Init(USART1, &USART_InitStruct);					// again all the properties are passed to the USART_Init function which takes care of all the bit setting
+  USART_Cmd(USART1, ENABLE);
+  
+  USART_InitStructure.USART_BaudRate = baudrate;				// the baudrate is set to the value we passed into this init function
+  USART_InitStructure.USART_WordLength = USART_WordLength_8b;// we want the data frame size to be 8 bits (standard)
+  USART_InitStructure.USART_StopBits = USART_StopBits_1;		// we want 1 stop bit (standard)
+  USART_InitStructure.USART_Parity = USART_Parity_No;		// we don't want a parity bit (standard)
+  USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; // we don't want flow control (standard)
+  USART_InitStructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx; // we want to enable the transmitter and the receiver
+  USART_Init(USART1, &USART_InitStructure);					// again all the properties are passed to the USART_Init function which takes care of all the bit setting
   
   USART_ITConfig(USART1, USART_IT_RXNE, ENABLE); // enable the USART1 receive interrupt
+  
+  NVIC_EnableIRQ(USART1_IRQn);
   
   NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;		 // we want to configure the USART1 interrupts
   NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;// this sets the priority group of the USART1 interrupts
@@ -48,6 +54,7 @@ void BLUETOOTH_Init_USART1(uint32_t baudrate){
   
   // finally this enables the complete USART1 peripheral
   USART_Cmd(USART1, ENABLE);
+  //*/
 }
 
 void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount){
