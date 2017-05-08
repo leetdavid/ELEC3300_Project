@@ -1,7 +1,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "ledm.h"
-//#include "stm32_eval.h"
 #include <string.h>
+#include "clock.h"
 //#include <stdio.h>
 
 const u8 row_array[] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
@@ -29,14 +29,14 @@ void computeDisplay(void){
     mode = 3;
     //how to access clock.h time_raw?
     time_mode_revert = getRawTime() + 3; //will revert mode in 3 seconds
-    setIcon(icon);
+    setDisplayIcon(icon);
 
     /*--- Showing Icons Service ---*/
   } else if(mode == 3){
     //if enought time passes, revert mode back to what it previously was
       if(getRawTime() >= time_mode_revert){
         mode = mode_prev;
-
+        clearDisplay();
       }
   }
 
@@ -166,7 +166,7 @@ void LEDM_Init(void) {
   
   // test codes  
   setDisplayIcon(0);
-  
+
   //memcpy(disp_r, icons[0][0], sizeof(disp_r) * 8);
   //memcpy(disp_g, icons[0][1], sizeof(disp_g) * 8);
   //memcpy(disp_b, icons[0][2], sizeof(disp_b) * 8);
