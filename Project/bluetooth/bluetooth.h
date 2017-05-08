@@ -9,10 +9,25 @@
 #include "stm32f10x_usart.h"
 #include <stdio.h>
 
-#define BT_BAUD 28800
+#define BT_BAUD 9600
 #define MAX_STRLEN 20
 
-void BLUETOOTH_Init(void);
-void BLUETOOTH_Init_USART1(uint32_t baudrate);
+/*********************************
+ * BLUETOOTH CONNECTION GUIDE
+ * PA9 and PA10
+ * BT(RX) to PA9(USART1_TX)
+ * BT(TX) to PA10(USART1_RX)
+ */
+
+/* Utility Functions */
+void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount);
+
+/* Initialization Functions */
+void Bluetooth_Init(void);
+
+/* Sub-Initialization Functions */
+void Bluetooth_NVIC_Configuration(void);
+void Bluetooth_GPIO_Configuration(void);
+void Bluetooth_USART_Configuration(void);
 
 #endif /*__WIRELESS_H*/
