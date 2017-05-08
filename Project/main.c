@@ -61,7 +61,7 @@ int main(void)
   //Test Clock
   Clock_Init();
   //Test Temp (Temperature sensor)
-  Temp_Init();
+  //Temp_Init();
   //Test Wireless
   Wireless_Init();
   
