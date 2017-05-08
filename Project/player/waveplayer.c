@@ -266,28 +266,6 @@ static ErrorCode WavePlayer_WaveParsing(uint8_t *DirName, /*uint8_t*/char *FileN
   u8 updateStr[] = "WParsing()";
   LCD_DrawString(0, 0, updateStr, sizeof updateStr);
   
-  //if (DFS_OpenFile(&vi, FileName, DFS_READ, sector, &fiwave))
-  //if(f_open(&fiwave, FileName, FA_OPEN_EXISTING))
-  //if (f_opendir(&di, "")) {
-	 // do {
-		//  FStatus = f_readdir(&di, &fiInfo);
-		//  //if (f_readdir())
-		//  if (FStatus == FR_OK && fiInfo.fname[0] != 0) {
-		//	  if (fiInfo.fattrib & AM_DIR) {                    // It is a directory
-		//	  }
-		//	  else {
-		//		  if (strcmp(fiInfo.fname, FileName) == 0) {
-		//			*FileLen = fiInfo.fsize;
-		//			number_of_clusters = fiInfo.fsize / 512;
-		//			if ((fiInfo.fsize % SECTOR_SIZE) > 0) {
-		//				number_of_clusters++;
-		//			}
-		//		  }
-		//	  }
-		//  }
-	 // } while (FStatus == FR_OK && fiInfo.fname[0] != 0);
-	 // f_closedir(&di);
-  //}
   if (f_stat(FileName, &fiInfo) == 0) {
 	  *FileLen = fiInfo.fsize;
 	  number_of_clusters = fiInfo.fsize / 512;
@@ -302,7 +280,6 @@ static ErrorCode WavePlayer_WaveParsing(uint8_t *DirName, /*uint8_t*/char *FileN
 	  FStatus = f_read(&fiwave, Wavebuffer, bufferSize/*SECTOR_SIZE*/, &i);
 	  //f_close(&fiwave);
   }
-  //DFS_ReadFile(&fiwave, sector, Wavebuffer, &i, SECTOR_SIZE);
 
   
   /* Read chunkID, must be 'RIFF'  ----------------------------------------------*/
@@ -372,7 +349,7 @@ static ErrorCode WavePlayer_WaveParsing(uint8_t *DirName, /*uint8_t*/char *FileN
     break; /* 22.05KHz = 24MHz / 1088 */
   case SAMPLE_RATE_44100:
     //TIM6ARRValue = 544;
-	TIM6ARRValue = 1632; /* 44.1kHz = 72MHz / 1632 */
+    TIM6ARRValue = 1632; /* 44.1kHz = 72MHz / 1632 */
     break; /* 44.1KHz = 24MHz / 544 */
   default:
     return(Unsupporetd_Sample_Rate);
@@ -472,7 +449,7 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
   while (WaveDataLength)
   {   
     //DFS_ReadFile(&fiwave, sector, Wavebuffer, &var, SECTOR_SIZE);
-	  BYTE FStatus = f_read(&fiwave, Wavebuffer, SECTOR_SIZE, &var);
+    BYTE FStatus = f_read(&fiwave, Wavebuffer, SECTOR_SIZE, &var);
    
     if (WaveDataLength) WaveDataLength -= 512;
     if (WaveDataLength < 512) WaveDataLength = 0;
@@ -508,7 +485,7 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
     DMA2_Channel3->CCR = 0x2091;
     
     //DFS_ReadFile(&fiwave, sector, Wavebuffer2, &var,SECTOR_SIZE);
-	FStatus = f_read(&fiwave, Wavebuffer2, SECTOR_SIZE, &var);
+    FStatus = f_read(&fiwave, Wavebuffer2, SECTOR_SIZE, &var);
     
     if (WaveDataLength) WaveDataLength -= 512;
     if (WaveDataLength < 512) WaveDataLength = 0;

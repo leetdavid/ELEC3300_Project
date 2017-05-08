@@ -57,6 +57,8 @@ void LEDM_Init(void) {
   GPIO_InitTypeDef GPIO_InitStructure;
   SPI_InitTypeDef SPI_InitStructure;
   DMA_InitTypeDef DMA_InitStructure;
+  NVIC_InitTypeDef NVIC_InitStructure;
+  TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
   //RCC_PCLK2Config(RCC_HCLK_Div2); 
   
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
@@ -78,14 +80,14 @@ void LEDM_Init(void) {
   SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
   SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
   SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_256;
   SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_LSB;
   SPI_Init(SPI1, &SPI_InitStructure); /* Configure SPI1 */
   
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
   DMA_DeInit(DMA1_Channel3); 
   DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)0x4001300C;
-  DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)led_buffer;
+  DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)&led_buffer;
   DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralDST;
   DMA_InitStructure.DMA_BufferSize = 32;
   DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
@@ -93,7 +95,7 @@ void LEDM_Init(void) {
   DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte;
   DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
   DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;
-  DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+  DMA_InitStructure.DMA_Priority = DMA_Priority_Low;
   DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
   DMA_Init(DMA1_Channel3, &DMA_InitStructure);
   
@@ -104,15 +106,14 @@ void LEDM_Init(void) {
   
   DMA_Cmd(DMA1_Channel3, ENABLE);
   
-  //DMA_ITConfig(DMA1_Channel3, DMA_IT_TC, ENABLE);
+  DMA_ITConfig(DMA1_Channel3, DMA_IT_TC, ENABLE);
  
-  //NVIC_InitTypeDef NVIC_InitStructure;
   //Enable DMA1 channel IRQ Channel */
-  //NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel3_IRQn;
-  //NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-  //NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-  //NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-  //NVIC_Init(&NVIC_InitStructure);
+  NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel3_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
   
   //while(!DMA_GetFlagStatus(DMA1_FLAG_TC3));
   
@@ -138,22 +139,23 @@ void LEDM_Init(void) {
   //LEDM_RTC_Configuration();
 }
 
-//void DMA1_Channel3_IRQHandler(void)
-//{
+void DMA1_Channel3_IRQHandler(void)
+{
   //Test on DMA1 Channel1 Transfer Complete interrupt
-//  if(DMA_GetITStatus(DMA1_IT_TC3))
-//  {
-//    update_count++;
-//    if(update_count >= 32) {
-//      update_count = 0;
-//    }
+  if(DMA_GetITStatus(DMA1_IT_TC3))
+  {
+    //DMA1_Channel3->CNDTR = 32;
+    update_count++;
+    if(update_count >= 4) {
+      update_count = 0;
+    }
     //Clear DMA1 Channel1 Half Transfer, Transfer Complete and Global interrupt pending bits
-//    DMA_ClearITPendingBit(DMA1_IT_GL3);
-//  }
-//}
+    DMA_ClearITPendingBit(DMA1_IT_GL3);
+  }
+}
 
 void update_Buffer(void) {
-  u8 send_data;
+  //u8 send_data;
   for(int i = 0; i < ROW_COUNT; i++) {
     setLatchClkPin(0);
     for(int j = 0; j < 4; j++) {
