@@ -65,6 +65,9 @@ int main(void)
   //Test Wireless
   Wireless_Init();
   
+  //Test Bluetooth
+  //Bluetooth_Init();
+  
   //Test LCD
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_FSMC, ENABLE);
 
