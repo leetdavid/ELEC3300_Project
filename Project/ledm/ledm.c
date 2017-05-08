@@ -34,7 +34,7 @@ void clearDisplay(void){
   memcpy(disp_b, disp_blank, sizeof(disp_r));
 }
 
-void setTime(u8 h1, u8 h2, u8 m1, u8 m2){
+void setDisplayTime(u8 h1, u8 h2, u8 m1, u8 m2){
   clearDisplay();
   copyNum(disp_r, h1, 0, 0);
   copyNum(disp_r, h2, 4, 0);

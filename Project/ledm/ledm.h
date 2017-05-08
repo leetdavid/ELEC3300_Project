@@ -247,8 +247,7 @@ static u8 disp_b[8];// = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 
 /*---- High-Layer Functions ----*/
 void updateDisplay(void);
-void setTime(u8 h1, u8 h2, u8 m1, u8 m2);
-void setMode(u8 mode);
+void setDisplayTime(u8 h1, u8 h2, u8 m1, u8 m2);
 void clearDisplay(void);
 
 /*---- Medium-Layer Functions ----*/
