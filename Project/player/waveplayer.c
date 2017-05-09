@@ -88,6 +88,7 @@ FILINFO fiInfo;
 FIL fiwave;
 //static uint8_t previoustmp = 64;
 extern uint8_t OutPut_Device;
+static u8 full_stop;
 /**
   * @}
   */
@@ -113,6 +114,7 @@ static ErrorCode WavePlayer_WaveParsing(uint8_t *DirName, /*uint8_t*/char *FileN
 void WavePlayer_Init(void)
 {  
   //Audio_Init(OUTPUT_DEVICE_SPEAKER, DEFAULT_VOLUME);
+	full_stop = 0;
 }
 
 /**
@@ -176,6 +178,7 @@ uint8_t WavePlayer_Start(void)
   */
 void WavePlayer_Stop(void)
 {
+	full_stop = 1;
   Audio_Stop();
 }
 
@@ -416,6 +419,8 @@ static ErrorCode WavePlayer_WaveParsing(uint8_t *DirName, /*uint8_t*/char *FileN
   */
 uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32_t *FileLen)
 {
+	full_stop = 0;
+
   uint32_t var;
   //uint8_t tmp;// , KeyState = NOKEY;
  
@@ -456,6 +461,10 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
     while (DMA_GetFlagStatus(DMA2_FLAG_TC3) == RESET)
     {     
 		refreshMatrixTest2();
+		if (full_stop) {
+			f_close(&fiwave);
+			return 0;
+		}
     //  tmp = (uint8_t) ((uint32_t)((WAVE_Format.DataSize - WaveDataLength) * 100) / WAVE_Format.DataSize);
     //  /*LCD_SetTextColor(LCD_COLOR_MAGENTA);
     //  LCD_DrawLine(LCD_LINE_7, 310 - ((tmp) * 3), 16, LCD_DIR_VERTICAL); */     
@@ -494,6 +503,10 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
     while (DMA_GetFlagStatus(DMA2_FLAG_TC3) == RESET)
     {
 		refreshMatrixTest2();
+		if (full_stop) {
+			f_close(&fiwave);
+			return 0;
+		}
     //  tmp = (uint8_t) ((uint32_t)((WAVE_Format.DataSize - WaveDataLength) * 100) / WAVE_Format.DataSize);
     //  /*LCD_SetTextColor(LCD_COLOR_MAGENTA);
     //  LCD_DrawLine(LCD_LINE_7, 310 - ((tmp) * 3), 16, LCD_DIR_VERTICAL); */ 

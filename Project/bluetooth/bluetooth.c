@@ -5,6 +5,7 @@
 #include "motor.h"
 #include "waveplayer.h"
 #include "clock.h"
+#include "main.h"
 
 u8 remain_value;
 u8 remain_mode;
@@ -156,6 +157,18 @@ void USART1_IRQHandler(void) {
 					else if (bt_input == 'q' || bt_input == 'Q') {
 						WavePlayer_RePlay();
 					}
+					else if (bt_input == 'r' || bt_input == 'R') {
+						WavePlayer_Stop();
+						play_next = 2;
+					}
+					else if (bt_input == 'u' || bt_input == 'U') {
+						WavePlayer_Stop();
+						play_next = 3;
+					}
+					else if (bt_input == 's' || bt_input == 'S') {
+						WavePlayer_Stop();
+						play_next = 0;
+					}
 					else if (bt_input == 'a' || bt_input == 'A') {
 						//u8 its0x20[] = "It's 0x20!";
 						//LCD_DrawString(0, 0, its0x20, sizeof its0x20);
@@ -167,16 +180,30 @@ void USART1_IRQHandler(void) {
 					else if (bt_input == 'd' || bt_input == 'D') {
 						Alarm_disable();
 					}
-					else if (bt_input == 0x21) {
+					else if (bt_input == 'i' || bt_input == 'I') {
+						setDisplayIcon(0);
+						updateDisplay();
+						halt_display(3);
+					}
+					else if (bt_input == 'j' || bt_input == 'J') {
 						setDisplayIcon(1);
+						updateDisplay();
+						halt_display(3);
 					}
 					else if (bt_input == 'K' || bt_input == 'k'/*0x22*/) {
 						setDisplayIcon(2);
 						updateDisplay();
 						halt_display(3);
 					}
-					else if (bt_input == 0x23) {
+					else if (bt_input == 'L' || bt_input == 'l') {
 						setDisplayIcon(3);
+						updateDisplay();
+						halt_display(3);
+					}
+					else if (bt_input == 'M' || bt_input == 'm') {
+						setDisplayIcon(4);
+						updateDisplay();
+						halt_display(3);
 					}
 					else {
 						u8 datarcvd[] = "BT Data Received";
@@ -201,6 +228,9 @@ void USART1_IRQHandler(void) {
 						}
 						else if (remain_mode == 2) {
 							Alarm_Set(rx_time[0], rx_time[1], rx_time[2], rx_time[3]);
+							setDisplayIcon(5);
+							updateDisplay();
+							halt_display(3);
 						}
 					}
 				}

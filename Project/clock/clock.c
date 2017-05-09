@@ -123,6 +123,7 @@ void RTC_IRQHandler(void) {
 
 		if (alarm_on == 1 && alarm_raw == getRawTime()) {
 			//halt_display(10);
+			WavePlayer_Stop();
 			play_next = 1;
 			Show_time_En();
 		}

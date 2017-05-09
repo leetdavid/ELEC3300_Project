@@ -207,7 +207,6 @@ int main(void)
   //Show_time_Dis();
   //Show_time_En();
   uint32_t FileLen;
-  WavePlayerMenu_Start("", "STAY.WAV", &FileLen);
   
   LCD_Clear();
   u8 lastStr[] = "Last Display";
@@ -219,7 +218,15 @@ int main(void)
   /* Please add your project implementation code below */
 
 	  refreshMatrixTest2();
-	  if (play_next) {
+	  if (play_next == 2) {
+		  play_next = 0;
+		  WavePlayerMenu_Start("", "STAY.WAV", &FileLen);
+	  }
+	  else if (play_next == 3) {
+		  play_next = 0;
+		  WavePlayerMenu_Start("", "CANT.WAV", &FileLen);
+	  }
+	  else if (play_next == 1) {
 		  play_next = 0;
 		  WavePlayerMenu_Start("", "IBIZA.WAV", &FileLen);
 	  }
