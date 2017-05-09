@@ -2,8 +2,18 @@
 #include "bluetooth.h"
 #include "lcd.h"
 #include "ledm.h"
+#include "motor.h"
+#include "waveplayer.h"
+
+u8 remain_value;
+u8 rx_time[4];
 
 void Bluetooth_Init(void){
+
+	remain_value = 0;
+	for (int i = 0; i < 4; i++) {
+		rx_time[i] = 0;
+	}
 
 	//Enable USART1 and GPIOA clock
 
@@ -119,27 +129,57 @@ void USART1_IRQHandler(void) {
 		USART_SendData(USART1, 'T');
 		if ((USART1->SR & USART_FLAG_RXNE) != (u16)RESET) {
 			char bt_input = USART_ReceiveData(USART1);
-			if (bt_input == 0x11) {
-				setDisplayMode(0);
-			}
-			if (bt_input == 'a') {
-				u8 its0x20[] = "It's 0x20!";
-				LCD_DrawString(0, 0, its0x20, sizeof its0x20);
-				setDisplayIcon(0);
-				UARTSend("Icon Mode\r\n", sizeof("Icon Mode\r\n"));    // Send message to UART1
-			}
-			else if (bt_input == 0x21) {
-				setDisplayIcon(1);
-			}
-			else if (bt_input == 'K'/*0x22*/) {
-				setDisplayIcon(2);
-			}
-			else if (bt_input == 0x23) {
-				setDisplayIcon(3);
-			}
-			else {
-				u8 datarcvd[] = "BT Data Received";
-				LCD_DrawString(0, 0, datarcvd, sizeof datarcvd);
+			if (bt_input == '\n' || bt_input == 0x0D) {
+				// do nothing
+			} else {
+				if (remain_value == 0) {
+					if (bt_input == 0x11) {
+						setDisplayMode(0);
+					}
+					if (bt_input == 't' || bt_input == 'T') {
+						remain_value = 4;
+					}
+					else if (bt_input == 'y' || bt_input == 'Y') {
+						setMotorSwitchPin(1);
+					}
+					else if (bt_input == 'z' || bt_input == 'Z') {
+						setMotorSwitchPin(0);
+					}
+					else if (bt_input == 'p' || bt_input == 'P') {
+						WavePlayer_Pause();
+						//WavePlayer_Stop();
+					}
+					else if (bt_input == 'q' || bt_input == 'Q') {
+						WavePlayer_RePlay();
+					}
+					else if (bt_input == 'a') {
+						u8 its0x20[] = "It's 0x20!";
+						LCD_DrawString(0, 0, its0x20, sizeof its0x20);
+						setDisplayIcon(0);
+						UARTSend("Icon Mode\r\n", sizeof("Icon Mode\r\n"));    // Send message to UART1
+					}
+					else if (bt_input == 0x21) {
+						setDisplayIcon(1);
+					}
+					else if (bt_input == 'K' || bt_input == 'k'/*0x22*/) {
+						setDisplayIcon(2);
+					}
+					else if (bt_input == 0x23) {
+						setDisplayIcon(3);
+					}
+					else {
+						u8 datarcvd[] = "BT Data Received";
+						LCD_DrawString(0, 0, datarcvd, sizeof datarcvd);
+					}
+				}
+				else {
+					rx_time[4 - remain_value] = bt_input - 0x30;
+					remain_value--;
+					if (remain_value == 0) {
+						setDisplayTime(rx_time[0],rx_time[1],rx_time[2],rx_time[3]);
+						updateDisplay();
+					}
+				}
 			}
 		}
 	}

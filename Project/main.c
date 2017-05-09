@@ -167,7 +167,7 @@ int main(void)
   //DIR dj;         /* Directory search object */
   FILINFO fno2;
   //FStatus = f_findfirst(&dj, &fno2, "", "*.txt");
-  LCD_Clear();
+  /*LCD_Clear();
   DIR dir;
   FStatus = f_opendir(&dir, "/");                       // Open the directory
   if (FStatus == FR_OK) {
@@ -196,7 +196,7 @@ int main(void)
       }
     } while(FStatus == FR_OK && fno2.fname[0] != 0);
     //f_closedir(&dir);
-  }
+  }*/
   
   //Test waveplayer
   //WavePlayer_Start();
