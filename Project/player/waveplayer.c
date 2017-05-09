@@ -339,13 +339,16 @@ static ErrorCode WavePlayer_WaveParsing(uint8_t *DirName, /*uint8_t*/char *FileN
   switch (WAVE_Format.SampleRate)
   {
   case SAMPLE_RATE_8000 :
-    TIM6ARRValue = 3000;
+    //TIM6ARRValue = 3000;
+	  TIM6ARRValue = 9000; /* 8KHz = 72MHz / 9000 */
     break; /* 8KHz = 24MHz / 3000 */
   case SAMPLE_RATE_11025:
-    TIM6ARRValue = 2176;
+    //TIM6ARRValue = 2176;
+	  TIM6ARRValue = 6531; /* 11.025KHz ~ 72MHz / 6531 */
     break; /* 11.025KHz = 24MHz / 2176 */
   case SAMPLE_RATE_22050:
-    TIM6ARRValue = 1088;
+    //TIM6ARRValue = 1088;
+	TIM6ARRValue = 3265; /* 22.05KHz ~ 72MHz / 3265 */
     break; /* 22.05KHz = 24MHz / 1088 */
   case SAMPLE_RATE_44100:
     //TIM6ARRValue = 544;
@@ -441,10 +444,6 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
   
   /* Start TIM6 */
   TIM_Cmd(TIM6, ENABLE);
-    
-  /*LCD_Clear();
-  u8 updateStr2[] = "WMStart() Loop";
-  LCD_DrawString(0, 0, updateStr2, sizeof updateStr2);*/
 
   while (WaveDataLength)
   {
@@ -524,10 +523,6 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
     DMA2_Channel3->CMAR = (uint32_t) & Wavebuffer2;
     DMA2_Channel3->CCR = 0x2091;
   }
-
-  /*LCD_Clear();
-  u8 updateStr3[] = "WMStart() Exit";
-  LCD_DrawString(0, 0, updateStr3, sizeof updateStr3);*/
    
   f_close(&fiwave);
 

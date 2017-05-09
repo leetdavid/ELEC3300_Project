@@ -221,8 +221,6 @@ void LEDM_Init(void) {
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
   //NVIC_Init(&NVIC_InitStructure);
-
-  //while(!DMA_GetFlagStatus(DMA1_FLAG_TC5));
   
   memset(led_buffer, 0, sizeof(led_buffer));
   setLatchClkPin(0);
@@ -260,7 +258,7 @@ void DMA1_Channel5_IRQHandler(void)
     //}
 	//LCD_Clear();
 	//LCD_DrawChar(2, 0, HexValueOffset[update_count]);
-    //Clear DMA1 Channel1 Half Transfer, Transfer Complete and Global interrupt pending bits
+    //Clear DMA1 Channel5 Complete Transfer, Transfer Complete and Global interrupt pending bits
     DMA_ClearITPendingBit(DMA1_IT_GL5);
   }
 }
@@ -273,18 +271,6 @@ void update_Buffer(void) {
       SPI_I2S_SendData(SPI2, led_buffer[i*4 + j]);
       while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_TXE) == RESET);
     }
-    //send_data = (led_buffer[i] & 0xFF000000) >> 24;
-    //SPI_I2S_SendData(SPI1, send_data);
-    //while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
-    //send_data = (led_buffer[i] & 0x00FF0000) >> 16;
-    //SPI_I2S_SendData(SPI1, send_data);
-    //while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
-    //send_data = (led_buffer[i] & 0x0000FF00) >> 8;
-    //SPI_I2S_SendData(SPI1, send_data);
-    //while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
-    //send_data = (led_buffer[i] & 0x000000FF);
-    //SPI_I2S_SendData(SPI1, row_array[i]);
-    //while (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_TXE) == RESET);
     for (int i=0; i<500; i++);
     setLatchClkPin(1);
   }
