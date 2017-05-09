@@ -68,8 +68,8 @@ int main(void)
   //Temp_Init();
   //Test Bluetooth
   Bluetooth_Init();
-  
-  
+  //Test Motor
+  Motor_Init();
   
   //Test LCD
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_FSMC, ENABLE);
@@ -165,9 +165,9 @@ int main(void)
   }*/
   
   //DIR dj;         /* Directory search object */
-  //FILINFO fno2;
+  FILINFO fno2;
   //FStatus = f_findfirst(&dj, &fno2, "", "*.txt");
-  /*LCD_Clear();
+  LCD_Clear();
   DIR dir;
   FStatus = f_opendir(&dir, "/");                       // Open the directory
   if (FStatus == FR_OK) {
@@ -195,8 +195,8 @@ int main(void)
 		}
       }
     } while(FStatus == FR_OK && fno2.fname[0] != 0);
-    f_closedir(&dir);
-  }*/
+    //f_closedir(&dir);
+  }
   
   //Test waveplayer
   //WavePlayer_Start();
@@ -212,6 +212,7 @@ int main(void)
   {
   /* Please add your project implementation code below */
 
+	  refreshMatrixTest2();
     //UARTSend("Why do I not work\r\n",sizeof("Why do I not work\r\n"));
   }
 }

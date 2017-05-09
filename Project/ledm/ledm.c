@@ -30,7 +30,7 @@ void computeDisplay(void){
     setDisplayMode(3);
     //how to access clock.h time_raw?
     time_mode_revert = getRawTime() + 3; //will revert mode in 3 seconds
-    setDisplayIcon(icon);
+    //setDisplayIcon(icon);
 
     /*--- Showing Icons Service ---*/
   } else if(mode == 3){

@@ -120,6 +120,10 @@ void computeDisplay(void);
 void setDisplayMode(u8 mode);
 void setDisplayIcon(u8 icon);
 void setDisplay(u8 *r, u8 *g, u8 *b);
+void refreshMatrixTest(void);
+void refreshMatrixTest2(void);
+void refreshMatrixLoopTest(void);
+void refreshMatrixLoopTest2(void);
 
 /*---- Medium-Layer Functions ----*/
 void copyNum(u8 *arr, u8 num, u8 x, u8 y);
@@ -129,8 +133,8 @@ void updateDisplay(void);
 void setLatchClkPin(u8 value);
 void LEDM_Init(void);
 void update_Buffer(void);
-void TIM2_IRQHandler(void);
-void LEDM_RTC_Configuration(void);
+//void TIM2_IRQHandler(void);
+//void LEDM_RTC_Configuration(void);
 
 
 

@@ -6,5 +6,6 @@
 #include "stm32f10x.h"
 
 void Motor_Init(void);
+void setMotorSwitchPin(u8 value);
 
 #endif /*__MOTOR_H*/
