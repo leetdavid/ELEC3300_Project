@@ -26,9 +26,8 @@ void computeDisplay(void){
 
     /*--- Custom/Icons ---*/
   } else if(mode == 2){
-    u8 icon = 2; //make this value modifiable
     mode_prev = mode;
-    mode = 3;
+    setDisplayMode(3);
     //how to access clock.h time_raw?
     time_mode_revert = getRawTime() + 3; //will revert mode in 3 seconds
     setDisplayIcon(icon);
