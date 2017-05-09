@@ -19,6 +19,8 @@
  * BT(TX) to PA10(USART1_RX)
  */
 
+void USART1_IRQHandler(void);
+
 /* Utility Functions */
 void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount);
 

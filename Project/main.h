@@ -44,7 +44,6 @@ extern "C"
 #include "clock.h"
 #include "motor.h"
 #include "temp.h"
-#include "wireless.h"
 #include "bluetooth.h"
 
 #ifdef __cplusplus

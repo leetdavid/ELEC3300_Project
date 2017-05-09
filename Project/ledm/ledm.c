@@ -50,6 +50,7 @@ void setDisplayMode(u8 m){
 
 void setDisplayIcon(u8 icon){
   setDisplay(icons[icon][0],icons[icon][1],icons[icon][2]);
+  updateDisplay();
 }
 
 void setDisplay(u8 *r, u8 *g, u8 *b){
@@ -153,10 +154,10 @@ void setDisplayTime(u8 h1, u8 h2, u8 m1, u8 m2){
 void setLatchClkPin(u8 value) {
   if(value > 0) {
     //GPIOC->BSRR = GPIOC->IDR | GPIO_Pin_5;
-    GPIOC->BSRR = GPIO_Pin_5;
+    GPIOA->BSRR = GPIO_Pin_6;
   } else {
     //GPIOC->BSRR = GPIOC->IDR & (~GPIO_Pin_5);
-    GPIOC->BRR = GPIO_Pin_5;
+    GPIOA->BRR = GPIO_Pin_6;
   }
 }
 
@@ -167,11 +168,11 @@ void LEDM_Init(void) {
   NVIC_InitTypeDef NVIC_InitStructure;
   //RCC_PCLK2Config(RCC_HCLK_Div2); 
   
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
   
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO, ENABLE);
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_15;
@@ -234,15 +235,16 @@ void LEDM_Init(void) {
     disp_g[i] = icons[0][1][i];
     disp_b[i] = icons[0][2][i];
   }*/
-  setDisplayIcon(0);
+  setDisplayIcon(1);
+  //setDisplayTime(2,2,3,9);
 
   //memcpy(disp_r, icons[0][0], sizeof(disp_r) * 8);
   //memcpy(disp_g, icons[0][1], sizeof(disp_g) * 8);
   //memcpy(disp_b, icons[0][2], sizeof(disp_b) * 8);
 
-  updateDisplay();
+  //updateDisplay();
   
-  update_Buffer();
+  //update_Buffer();
 }
 
 void DMA1_Channel5_IRQHandler(void)

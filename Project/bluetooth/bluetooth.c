@@ -1,5 +1,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "bluetooth.h"
+#include "lcd.h"
+#include "ledm.h"
 
 void Bluetooth_Init(void){
 
@@ -18,8 +20,7 @@ void Bluetooth_Init(void){
 * Description    : Configures the different GPIO ports
 *******************************************************************************/
 void Bluetooth_GPIO_Configuration(void){
-
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
 
   GPIO_InitTypeDef GPIO_InitStructure;
   
@@ -32,7 +33,7 @@ void Bluetooth_GPIO_Configuration(void){
   /* Configure USART1 Rx (PA.10) as input floating */
   GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_10;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  //GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
 }
 
@@ -41,8 +42,7 @@ void Bluetooth_GPIO_Configuration(void){
 * Description    : Configures the USART1
 *******************************************************************************/
 void Bluetooth_USART_Configuration(void){
-
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 
   USART_InitTypeDef USART_InitStructure;
 
@@ -101,4 +101,46 @@ void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount){
     }
     USART_SendData(USART1, (uint8_t) *pucBuffer++);
   }
+}
+
+
+
+/******************************************************************************/
+/*            STM32F10x Peripherals Interrupt Handlers                        */
+/******************************************************************************/
+
+/**
+* @brief  This function handles USARTx global interrupt request
+* @param  None
+* @retval None
+*/
+void USART1_IRQHandler(void) {
+	if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) {
+		USART_SendData(USART1, 'T');
+		if ((USART1->SR & USART_FLAG_RXNE) != (u16)RESET) {
+			char bt_input = USART_ReceiveData(USART1);
+			if (bt_input == 0x11) {
+				setDisplayMode(0);
+			}
+			if (bt_input == 'a') {
+				u8 its0x20[] = "It's 0x20!";
+				LCD_DrawString(0, 0, its0x20, sizeof its0x20);
+				setDisplayIcon(0);
+				UARTSend("Icon Mode\r\n", sizeof("Icon Mode\r\n"));    // Send message to UART1
+			}
+			else if (bt_input == 0x21) {
+				setDisplayIcon(1);
+			}
+			else if (bt_input == 'K'/*0x22*/) {
+				setDisplayIcon(2);
+			}
+			else if (bt_input == 0x23) {
+				setDisplayIcon(3);
+			}
+			else {
+				u8 datarcvd[] = "BT Data Received";
+				LCD_DrawString(0, 0, datarcvd, sizeof datarcvd);
+			}
+		}
+	}
 }

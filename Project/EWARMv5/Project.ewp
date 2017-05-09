@@ -298,7 +298,6 @@
           <state>$PROJ_DIR$\..\..\Project\bluetooth</state>
           <state>$PROJ_DIR$\..\..\Project\motor</state>
           <state>$PROJ_DIR$\..\..\Project\temp</state>
-          <state>$PROJ_DIR$\..\..\Project\wireless</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -969,12 +968,6 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\stm32f10x_it.h</name>
-    </file>
-  </group>
-  <group>
-    <name>Wireless_Driver</name>
-    <file>
-      <name>$PROJ_DIR$\..\wireless\wireless.c</name>
     </file>
   </group>
 </project>

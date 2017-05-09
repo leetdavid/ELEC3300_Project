@@ -34,7 +34,6 @@ void Clock_RTC_Configuration(void){
   RTC_SetPrescaler(32767); 
 
   RTC_WaitForLastTask();
-
 }
 
 uint32_t getRawTime(void){
