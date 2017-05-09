@@ -53,3 +53,16 @@ void Clock_UpdateValues(void){
   m1 = TMM/10;
   m2 = TMM%10;
 }
+
+void Time_SetRaw(uint32_t time){
+  RTC_WaitForLastTask();
+  RTC_SetCounter(time);
+  RTC_WaitForLastTask();
+}
+
+void Time_Set(u8 h1, u8 h2, u8 m1, u8 m2){
+  uint32_t hh1 = h1, hh2 = h2, mm1 = m1, mm2 = m2;
+  uint32_t THH = hh1 << 4 + hh2;
+  uint32_t TMM = mm1 << 4 + mm2;
+  Time_SetRaw(THH*3600 + TMM*60);
+}

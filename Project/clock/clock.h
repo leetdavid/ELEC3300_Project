@@ -14,4 +14,7 @@ void Clock_RTC_Configuration(void);
 void Clock_UpdateValues(void);
 uint32_t getRawTime(void);
 
+void Time_SetRaw(uint32_t time);
+void Time_Set(u8 h1, u8 h2, u8 m1, u8 m2);
+
 #endif /*__CLOCK_H*/
