@@ -4,13 +4,16 @@
 #include "ledm.h"
 #include "motor.h"
 #include "waveplayer.h"
+#include "clock.h"
 
 u8 remain_value;
+u8 remain_mode;
 u8 rx_time[4];
 
 void Bluetooth_Init(void){
 
 	remain_value = 0;
+	remain_mode = 0;
 	for (int i = 0; i < 4; i++) {
 		rx_time[i] = 0;
 	}
@@ -138,6 +141,7 @@ void USART1_IRQHandler(void) {
 					}
 					if (bt_input == 't' || bt_input == 'T') {
 						remain_value = 4;
+						remain_mode = 1;
 					}
 					else if (bt_input == 'y' || bt_input == 'Y') {
 						setMotorSwitchPin(1);
@@ -152,17 +156,24 @@ void USART1_IRQHandler(void) {
 					else if (bt_input == 'q' || bt_input == 'Q') {
 						WavePlayer_RePlay();
 					}
-					else if (bt_input == 'a') {
-						u8 its0x20[] = "It's 0x20!";
-						LCD_DrawString(0, 0, its0x20, sizeof its0x20);
-						setDisplayIcon(0);
-						UARTSend("Icon Mode\r\n", sizeof("Icon Mode\r\n"));    // Send message to UART1
+					else if (bt_input == 'a' || bt_input == 'A') {
+						//u8 its0x20[] = "It's 0x20!";
+						//LCD_DrawString(0, 0, its0x20, sizeof its0x20);
+						//setDisplayIcon(0);
+						//UARTSend("Icon Mode\r\n", sizeof("Icon Mode\r\n"));    // Send message to UART1
+						remain_mode = 2;
+						remain_value = 4;
+					}
+					else if (bt_input == 'd' || bt_input == 'D') {
+						Alarm_disable();
 					}
 					else if (bt_input == 0x21) {
 						setDisplayIcon(1);
 					}
 					else if (bt_input == 'K' || bt_input == 'k'/*0x22*/) {
 						setDisplayIcon(2);
+						updateDisplay();
+						halt_display(3);
 					}
 					else if (bt_input == 0x23) {
 						setDisplayIcon(3);
@@ -176,8 +187,21 @@ void USART1_IRQHandler(void) {
 					rx_time[4 - remain_value] = bt_input - 0x30;
 					remain_value--;
 					if (remain_value == 0) {
-						setDisplayTime(rx_time[0],rx_time[1],rx_time[2],rx_time[3]);
-						updateDisplay();
+						if (remain_mode == 1) {
+							Time_Set(rx_time[0], rx_time[1], rx_time[2], rx_time[3]);
+							//setDisplayTime(rx_time[0],rx_time[1],rx_time[2],rx_time[3]);
+							/*uint32_t rTime = getRawTime();
+							uint32_t THH = rTime / 3600;
+							uint32_t TMM = (rTime % 3600) / 60;
+							setDisplayTime(THH / 10, THH % 10, TMM / 10, TMM % 10);*/
+							Clock_UpdateValues();
+							setDisplayTime(h1, h2, m1, m2);
+							updateDisplay();
+							Show_time_En();
+						}
+						else if (remain_mode == 2) {
+							Alarm_Set(rx_time[0], rx_time[1], rx_time[2], rx_time[3]);
+						}
 					}
 				}
 			}

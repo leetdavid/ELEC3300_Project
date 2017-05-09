@@ -8,6 +8,8 @@ EXTI_InitTypeDef EXTI_InitStructure;
 NVIC_InitTypeDef NVIC_InitStructure;
 uint32_t EXTI_Line;
 
+u8 play_next;
+
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
@@ -50,6 +52,8 @@ int main(void)
 
   /* Please add your project initialization code below */
  
+  play_next = 0;
+
   //Test Button
   Button_Init();
   //Test REncoder
@@ -200,8 +204,10 @@ int main(void)
   
   //Test waveplayer
   //WavePlayer_Start();
+  //Show_time_Dis();
+  //Show_time_En();
   uint32_t FileLen;
-  WavePlayerMenu_Start("", "IBIZA.WAV", &FileLen);
+  WavePlayerMenu_Start("", "STAY.WAV", &FileLen);
   
   LCD_Clear();
   u8 lastStr[] = "Last Display";
@@ -213,6 +219,10 @@ int main(void)
   /* Please add your project implementation code below */
 
 	  refreshMatrixTest2();
+	  if (play_next) {
+		  play_next = 0;
+		  WavePlayerMenu_Start("", "IBIZA.WAV", &FileLen);
+	  }
     //UARTSend("Why do I not work\r\n",sizeof("Why do I not work\r\n"));
   }
 }

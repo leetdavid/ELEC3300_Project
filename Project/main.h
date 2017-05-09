@@ -46,6 +46,8 @@ extern "C"
 #include "temp.h"
 #include "bluetooth.h"
 
+extern u8 play_next;
+
 #ifdef __cplusplus
 }
 #endif

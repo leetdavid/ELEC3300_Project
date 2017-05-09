@@ -122,8 +122,10 @@ void setDisplayIcon(u8 icon);
 void setDisplay(u8 *r, u8 *g, u8 *b);
 void refreshMatrixTest(void);
 void refreshMatrixTest2(void);
+void refreshMatrixTest3(void);
 void refreshMatrixLoopTest(void);
 void refreshMatrixLoopTest2(void);
+void loadVis(void);
 
 /*---- Medium-Layer Functions ----*/
 void copyNum(u8 *arr, u8 num, u8 x, u8 y);

@@ -10,6 +10,7 @@ static u8 row_no;
 static u8 column_block_no;
 static u8 update_count;
 static uint32_t delay_counter;
+static uint32_t vis_delay_counter;
 
 static uint32_t time_mode_revert;
 
@@ -137,9 +138,53 @@ void refreshMatrixTest2(void) {
 	}
 }
 
+//void refreshMatrixTest3(void) {
+//	if (vis_delay_counter >= 100000) {
+//		loadVis();
+//		updateDisplay();
+//		vis_delay_counter = 0;
+//	}
+//	else {
+//		vis_delay_counter++;
+//	}
+//
+//	if (delay_counter > 0) {
+//		delay_counter++;
+//		if (delay_counter >= 1) {
+//			delay_counter = 0;
+//			setLatchClkPin(1);
+//		}
+//	}
+//	else if (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_TXE) == SET) {
+//		if (column_block_no < 4) {
+//			SPI_I2S_SendData(SPI2, led_buffer[row_no * 4 + column_block_no]);
+//			column_block_no++;
+//		}
+//		else {
+//			column_block_no = 0;
+//			row_no++;
+//			if (row_no >= ROW_COUNT) {
+//				row_no = 0;
+//			}
+//			setLatchClkPin(0);
+//			delay_counter++;
+//		}
+//	}
+//}
+
 void refreshMatrixLoopTest2(void) {
 	while (1) {
 		refreshMatrixTest2();
+	}
+}
+
+void loadVis(void) {
+	uint16_t value = DAC_GetDataOutputValue(DAC_Channel_1);
+	u8 scaled_value = value / 8192;
+	for (u8 i = 0; i < 8; i++) {
+		disp_r[i] = scaled_value >= i ? 0xFF : 0x00;
+		disp_g[i] = scaled_value > i ? 0xFF : 0x00;
+		disp_b[i] = 0x00;
 	}
 }
 
@@ -227,6 +272,7 @@ void LEDM_Init(void) {
   row_no = 0;
   column_block_no = 0;
   update_count = 0;
+  vis_delay_counter = 0;
   delay_counter = 0;
   
   // test codes  
