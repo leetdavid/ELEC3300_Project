@@ -7,6 +7,7 @@ GPIO_InitTypeDef GPIO_InitStructure;
 EXTI_InitTypeDef EXTI_InitStructure;
 NVIC_InitTypeDef NVIC_InitStructure;
 uint32_t EXTI_Line;
+char bt_input;
 
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -53,7 +54,7 @@ int main(void)
   //Test Button
   Button_Init();
   //Test REncoder
-  //REncoder_Init();
+  REncoder_Init();
   //Test LEDM
   LEDM_Init();
   //while(1) {
@@ -210,11 +211,6 @@ int main(void)
   {
   /* Please add your project implementation code below */
 
-while(1){
-  	u8 aaa[] = "AAA";
-    LCD_DrawString(0, 0, aaa, sizeof(aaa));
-    UARTSend(aaa, sizeof(aaa));
-  }
     //UARTSend("Why do I not work\r\n",sizeof("Why do I not work\r\n"));
   }
 }
@@ -228,7 +224,6 @@ while(1){
   * @param  None
   * @retval None
   */
-char i;
 void USART1_IRQHandler(void){
 
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET){
@@ -236,23 +231,23 @@ void USART1_IRQHandler(void){
 	}
 
 	if ((USART1->SR & USART_FLAG_RXNE) != (u16)RESET){
-		i = USART_ReceiveData(USART1);
-		if(i == 0x11){
+		bt_input = USART_ReceiveData(USART1);
+		if(bt_input == 0x11){
       setDisplayMode(0);
     }
-    if(i == 'a'){
+    if(bt_input == 'a'){
       u8 its0x20[] = "It's 0x20!";
       LCD_DrawString(0, 0, its0x20, sizeof its0x20);
       setDisplayIcon(0);
       UARTSend("Icon Mode\r\n",sizeof("Icon Mode\r\n"));    // Send message to UART1
     }
-    else if(i == 0x21){
+    else if(bt_input == 0x21){
       setDisplayIcon(1);
     }
-    else if(i == 0x22){
+    else if(bt_input == 0x22){
       setDisplayIcon(2);
     }
-    else if(i == 0x23){
+    else if(bt_input == 0x23){
       setDisplayIcon(3);
     } else {
       u8 datarcvd[] = "BT Data Received";
