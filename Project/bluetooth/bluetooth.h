@@ -19,6 +19,8 @@
  * BT(TX) to PA10(USART1_RX)
  */
 
+extern u8 rx_time[4];
+
 void USART1_IRQHandler(void);
 
 /* Utility Functions */
