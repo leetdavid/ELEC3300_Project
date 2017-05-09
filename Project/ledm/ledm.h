@@ -241,15 +241,19 @@ static u8 icons[][3][8] = {
 //static u32 led_buffer [8]; 
 static u8 led_buffer [32];
 
-static u8 disp_r[8];// = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-static u8 disp_g[8];// = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
-static u8 disp_b[8];// = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
+static u8 disp_r[8];
+static u8 disp_g[8];
+static u8 disp_b[8];
 
 /*---- High-Layer Functions ----*/
 void updateDisplay(void);
 void setTime(u8 h1, u8 h2, u8 m1, u8 m2);
 void setMode(u8 mode);
 void clearDisplay(void);
+void refreshMatrixTest(void);
+void refreshMatrixLoopTest(void);
+void refreshMatrixTest2(void);
+void refreshMatrixLoopTest2(void);
 
 /*---- Medium-Layer Functions ----*/
 void getCurrentTime(void);
@@ -259,10 +263,7 @@ void copyNum(u8 *arr, u8 num, u8 x, u8 y);
 void setLatchClkPin(u8 value);
 void LEDM_Init(void);
 void update_Buffer(void);
-void TIM2_IRQHandler(void);
-void LEDM_RTC_Configuration(void);
-
-
+void DMA1_Channel3_IRQHandler(void);
 
 /* Minor Methods */
 void LEDMdelay(void);

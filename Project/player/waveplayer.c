@@ -447,7 +447,7 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
   LCD_DrawString(0, 0, updateStr2, sizeof updateStr2);*/
 
   while (WaveDataLength)
-  {   
+  {
     //DFS_ReadFile(&fiwave, sector, Wavebuffer, &var, SECTOR_SIZE);
     BYTE FStatus = f_read(&fiwave, Wavebuffer, SECTOR_SIZE, &var);
    
@@ -456,10 +456,12 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
   
     while (DMA_GetFlagStatus(DMA2_FLAG_TC3) == RESET)
     {     
+		refreshMatrixTest2();
     //  tmp = (uint8_t) ((uint32_t)((WAVE_Format.DataSize - WaveDataLength) * 100) / WAVE_Format.DataSize);
     //  /*LCD_SetTextColor(LCD_COLOR_MAGENTA);
     //  LCD_DrawLine(LCD_LINE_7, 310 - ((tmp) * 3), 16, LCD_DIR_VERTICAL); */     
     }
+	refreshMatrixTest2();
     
     DMA2->IFCR = DMA2_FLAG_TC3;
     DMA2_Channel3->CCR = 0x0;
@@ -486,16 +488,18 @@ uint8_t WavePlayerMenu_Start(uint8_t *DirName, /*uint8_t*/char *FileName, uint32
     
     //DFS_ReadFile(&fiwave, sector, Wavebuffer2, &var,SECTOR_SIZE);
     FStatus = f_read(&fiwave, Wavebuffer2, SECTOR_SIZE, &var);
-    
+
     if (WaveDataLength) WaveDataLength -= 512;
     if (WaveDataLength < 512) WaveDataLength = 0;
 
     while (DMA_GetFlagStatus(DMA2_FLAG_TC3) == RESET)
     {
+		refreshMatrixTest2();
     //  tmp = (uint8_t) ((uint32_t)((WAVE_Format.DataSize - WaveDataLength) * 100) / WAVE_Format.DataSize);
     //  /*LCD_SetTextColor(LCD_COLOR_MAGENTA);
     //  LCD_DrawLine(LCD_LINE_7, 310 - ((tmp) * 3), 16, LCD_DIR_VERTICAL); */ 
     }
+	refreshMatrixTest2();
         
     DMA2->IFCR = DMA2_FLAG_TC3;
     DMA2_Channel3->CCR = 0x0;
