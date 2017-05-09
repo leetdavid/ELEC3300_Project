@@ -295,6 +295,7 @@
           <state>$PROJ_DIR$\..\..\Project\button</state>
           <state>$PROJ_DIR$\..\..\Project\ledm</state>
           <state>$PROJ_DIR$\..\..\Project\clock</state>
+          <state>$PROJ_DIR$\..\..\Project\bluetooth</state>
           <state>$PROJ_DIR$\..\..\Project\motor</state>
           <state>$PROJ_DIR$\..\..\Project\temp</state>
           <state>$PROJ_DIR$\..\..\Project\wireless</state>
@@ -808,6 +809,12 @@
       <data/>
     </settings>
   </configuration>
+  <group>
+    <name>Bluetooth_Driver</name>
+    <file>
+      <name>$PROJ_DIR$\..\bluetooth\bluetooth.c</name>
+    </file>
+  </group>
   <group>
     <name>Button_Driver</name>
     <file>

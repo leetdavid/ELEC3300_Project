@@ -76,7 +76,7 @@ static u8 nums[10][5] = {
 };
 
 static u8 icons[][3][8] = {
-  {//Facebook Like
+  {//0 Facebook Like
     {//R
       0x04,
       0x0C,
@@ -108,7 +108,7 @@ static u8 icons[][3][8] = {
       0x00
     }
   },
-  {//Facebook Icon
+  {//1 Facebook Icon
     {//R
       0x00,
       0x00,
@@ -140,7 +140,7 @@ static u8 icons[][3][8] = {
       0xFF
     }
   },
-  {//Whatsapp
+  {//2 Whatsapp
     {//R
       0x3C,
       0x42,
@@ -172,7 +172,7 @@ static u8 icons[][3][8] = {
       0xFC
     }
   },
-  {//Gmail
+  {//3 Gmail
     {//R
       0x00,
       0xFF,
@@ -204,7 +204,7 @@ static u8 icons[][3][8] = {
       0x00
     }
   },
-  {//Heart
+  {//4 Heart
     {//R
       0x66,
       0xFF,
@@ -245,19 +245,24 @@ static u8 disp_r[8];
 static u8 disp_g[8];
 static u8 disp_b[8];
 
+static u8 mode_prev = 0;
+static u8 mode = 0;
+
 /*---- High-Layer Functions ----*/
-void updateDisplay(void);
-void setTime(u8 h1, u8 h2, u8 m1, u8 m2);
-void setMode(u8 mode);
+void setDisplayTime(u8 h1, u8 h2, u8 m1, u8 m2);
 void clearDisplay(void);
 void refreshMatrixTest(void);
 void refreshMatrixLoopTest(void);
 void refreshMatrixTest2(void);
 void refreshMatrixLoopTest2(void);
+void computeDisplay(void);
+void setDisplayMode(u8 mode);
+void setDisplayIcon(u8 icon);
+void setDisplay(u8 *r, u8 *g, u8 *b);
 
 /*---- Medium-Layer Functions ----*/
-void getCurrentTime(void);
 void copyNum(u8 *arr, u8 num, u8 x, u8 y);
+void updateDisplay(void);
 
 /*---- Low-Layer Functions ----*/
 void setLatchClkPin(u8 value);

@@ -1,11 +1,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stm32f10x_usart.h"
 
 /* Private typedef -----------------------------------------------------------*/
 GPIO_InitTypeDef GPIO_InitStructure;
 EXTI_InitTypeDef EXTI_InitStructure;
 NVIC_InitTypeDef NVIC_InitStructure;
 uint32_t EXTI_Line;
+char bt_input;
 
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -66,6 +68,10 @@ int main(void)
   //Temp_Init();
   //Test Wireless
   Wireless_Init();
+  //Test Bluetooth
+  Bluetooth_Init();
+  
+  
   
   //Test LCD
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_FSMC, ENABLE);
@@ -207,9 +213,47 @@ int main(void)
   {
   /* Please add your project implementation code below */
 
-
-
+    //UARTSend("Why do I not work\r\n",sizeof("Why do I not work\r\n"));
   }
 }
 
+/******************************************************************************/
+/*            STM32F10x Peripherals Interrupt Handlers                        */
+/******************************************************************************/
+  
+/**
+  * @brief  This function handles USARTx global interrupt request
+  * @param  None
+  * @retval None
+  */
+void USART1_IRQHandler(void){
 
+	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET){
+		USART_SendData(USART1, 'T');
+	}
+
+	if ((USART1->SR & USART_FLAG_RXNE) != (u16)RESET){
+		bt_input = USART_ReceiveData(USART1);
+		if(bt_input == 0x11){
+      setDisplayMode(0);
+    }
+    if(bt_input == 'a'){
+      u8 its0x20[] = "It's 0x20!";
+      LCD_DrawString(0, 0, its0x20, sizeof its0x20);
+      setDisplayIcon(0);
+      UARTSend("Icon Mode\r\n",sizeof("Icon Mode\r\n"));    // Send message to UART1
+    }
+    else if(bt_input == 0x21){
+      setDisplayIcon(1);
+    }
+    else if(bt_input == 0x22){
+      setDisplayIcon(2);
+    }
+    else if(bt_input == 0x23){
+      setDisplayIcon(3);
+    } else {
+      u8 datarcvd[] = "BT Data Received";
+      LCD_DrawString(0, 0, datarcvd, sizeof datarcvd);
+    }
+  }
+}
