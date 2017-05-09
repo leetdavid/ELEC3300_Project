@@ -4,15 +4,10 @@
 void Bluetooth_Init(void){
 
 	//Enable USART1 and GPIOA clock
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1 | RCC_APB2Periph_GPIOA, ENABLE);
 
-	Bluetooth_NVIC_Configuration();
+	//Bluetooth_NVIC_Configuration();
 	Bluetooth_GPIO_Configuration();
 	Bluetooth_USART_Configuration();
-
-	//Enable the USART1 Receive Interrupt: this interrupt is generated
-	// when USART1's data-receive register is not empty
-	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 
 	const unsigned char welcome_str[] = " Welcome to Bluetooth!\r\n";
 	UARTSend(welcome_str, sizeof(welcome_str));
@@ -23,6 +18,9 @@ void Bluetooth_Init(void){
 * Description    : Configures the different GPIO ports
 *******************************************************************************/
 void Bluetooth_GPIO_Configuration(void){
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
+
   GPIO_InitTypeDef GPIO_InitStructure;
   
   /* Configure USART1 Tx (PA.09) as alternate function push-pull */
@@ -43,7 +41,12 @@ void Bluetooth_GPIO_Configuration(void){
 * Description    : Configures the USART1
 *******************************************************************************/
 void Bluetooth_USART_Configuration(void){
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+
   USART_InitTypeDef USART_InitStructure;
+
+  USART_Cmd(USART1, ENABLE);
   
 /* USART1 configuration ------------------------------------------------------*/
   USART_InitStructure.USART_BaudRate   			= BT_BAUD;        // Baud Rate
@@ -54,9 +57,14 @@ void Bluetooth_USART_Configuration(void){
   USART_InitStructure.USART_Mode       			= USART_Mode_Rx | USART_Mode_Tx;
   
   USART_Init(USART1, &USART_InitStructure);
+
+  //Enable the USART1 Receive Interrupt: this interrupt is generated
+	// when USART1's data-receive register is not empty
+	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
   
+  NVIC_EnableIRQ(USART1_IRQn);
   /* Enable USART1 */
-  USART_Cmd(USART1, ENABLE);
+  //USART_Cmd(USART1, ENABLE);
 }
   
 /**
@@ -85,10 +93,11 @@ void UARTSend(const unsigned char *pucBuffer, unsigned long ulCount){
     // Loop while there are more characters to send.
     //
   while(ulCount--){
-    USART_SendData(USART1, (uint16_t) *pucBuffer++);
+    
     /* Loop until the end of transmission */
     while(USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET){
     	//looooooperino
     }
+    USART_SendData(USART1, (uint8_t) *pucBuffer++);
   }
 }

@@ -1,5 +1,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "stm32f10x_usart.h"
 
 /* Private typedef -----------------------------------------------------------*/
 GPIO_InitTypeDef GPIO_InitStructure;
@@ -52,7 +53,7 @@ int main(void)
   //Test Button
   Button_Init();
   //Test REncoder
-  REncoder_Init();
+  //REncoder_Init();
   //Test LEDM
   LEDM_Init();
   //while(1) {
@@ -64,9 +65,10 @@ int main(void)
   //Temp_Init();
   //Test Wireless
   Wireless_Init();
-  
   //Test Bluetooth
   Bluetooth_Init();
+  
+  
   
   //Test LCD
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_FSMC, ENABLE);
@@ -208,7 +210,11 @@ int main(void)
   {
   /* Please add your project implementation code below */
 
-
+while(1){
+  	u8 aaa[] = "AAA";
+    LCD_DrawString(0, 0, aaa, sizeof(aaa));
+    UARTSend(aaa, sizeof(aaa));
+  }
     //UARTSend("Why do I not work\r\n",sizeof("Why do I not work\r\n"));
   }
 }
@@ -222,8 +228,13 @@ int main(void)
   * @param  None
   * @retval None
   */
-int i;
+char i;
 void USART1_IRQHandler(void){
+
+	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET){
+		USART_SendData(USART1, 'T');
+	}
+
 	if ((USART1->SR & USART_FLAG_RXNE) != (u16)RESET){
 		i = USART_ReceiveData(USART1);
 		if(i == 0x11){
