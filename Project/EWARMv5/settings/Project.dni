@@ -1,7 +1,8 @@
 [DebugChecksum]
-Checksum=-1894912146
+Checksum=631612361
 [DisAssemblyWindow]
-NumStates=_ 0
+NumStates=_ 1
+State 1=_ 1
 [InstructionProfiling]
 Enabled=_ 0
 [CodeCoverage]
@@ -26,8 +27,10 @@ Graph=0
 mode=1
 [Breakpoints]
 Bp0=_ "STD_CODE" "{Z:\elec3300\project work\project_src\PROJ\Project\player\waveplayer.c}.455.3@1" 0 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{C:\Users\David Lee\OneDrive\Homework\ELEC3300\project\ELEC3300PROJ\Project\main.c}.238.2@1" 1 0 0 0 "" 0 ""
-Count=2
+Bp1=_ "STD_CODE" "{C:\Users\David Lee\OneDrive\Homework\ELEC3300\project\ELEC3300PROJ\Project\main.c}.243.5@1" 1 0 0 0 "" 0 ""
+Bp2=_ "STD_CODE" "{C:\Users\David Lee\OneDrive\Homework\ELEC3300\project\ELEC3300PROJ\Project\main.c}.238.2@1" 1 0 0 0 "" 0 ""
+Bp3=_ "STD_CODE" "{C:\Users\David Lee\OneDrive\Homework\ELEC3300\project\ELEC3300PROJ\Project\main.c}.234.2@1" 1 0 0 0 "" 0 ""
+Count=4
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""

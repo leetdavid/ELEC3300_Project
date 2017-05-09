@@ -5,7 +5,7 @@ void Bluetooth_Init(void){
 
 	//Enable USART1 and GPIOA clock
 
-	//Bluetooth_NVIC_Configuration();
+	Bluetooth_NVIC_Configuration();
 	Bluetooth_GPIO_Configuration();
 	Bluetooth_USART_Configuration();
 

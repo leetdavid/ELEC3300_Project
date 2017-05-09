@@ -240,7 +240,7 @@ void USART1_IRQHandler(void){
 		if(i == 0x11){
       setDisplayMode(0);
     }
-    else if(i == 'a'){
+    if(i == 'a'){
       u8 its0x20[] = "It's 0x20!";
       LCD_DrawString(0, 0, its0x20, sizeof its0x20);
       setDisplayIcon(0);
