@@ -5,9 +5,9 @@ void Bluetooth_Init(void){
 
 	//Enable USART1 and GPIOA clock
 
-	Bluetooth_NVIC_Configuration();
 	Bluetooth_GPIO_Configuration();
 	Bluetooth_USART_Configuration();
+  Bluetooth_NVIC_Configuration();
 
 	const unsigned char welcome_str[] = " Welcome to Bluetooth!\r\n";
 	UARTSend(welcome_str, sizeof(welcome_str));
@@ -66,7 +66,7 @@ void Bluetooth_USART_Configuration(void){
   /* Enable USART1 */
   //USART_Cmd(USART1, ENABLE);
 }
-  
+
 /**
   * @brief  Configures the nested vectored interrupt controller.
   * @param  None
@@ -76,12 +76,13 @@ void Bluetooth_NVIC_Configuration(void){
   NVIC_InitTypeDef NVIC_InitStructure;
   
   /* Enable the USARTx Interrupt */
-  NVIC_InitStructure.NVIC_IRQChannel 										= USART1_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority 	= 0;
-  NVIC_InitStructure.NVIC_IRQChannelSubPriority 				= 0;
-  NVIC_InitStructure.NVIC_IRQChannelCmd 								= ENABLE;
+  NVIC_InitStructure.NVIC_IRQChannel                    = USART1_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority  = 0;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority         = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd                 = ENABLE;
   NVIC_Init(&NVIC_InitStructure);
 }
+
 /*******************************************************************************
 * Function Name  : UARTSend
 * Description    : Send a string to the UART.
